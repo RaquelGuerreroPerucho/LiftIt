@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'calendario',
     loadChildren: () => import('./calendario/calendario.module').then( m => m.CalendarioPageModule)
   },
+  {
+    path: 'nuevo-entrenamiento',
+    loadChildren: () => import('./nuevo-entrenamiento/nuevo-entrenamiento.module').then( m => m.NuevoEntrenamientoPageModule)
+  },
 ];
 
 @NgModule({

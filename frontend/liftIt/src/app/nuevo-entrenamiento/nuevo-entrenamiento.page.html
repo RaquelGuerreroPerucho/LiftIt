@@ -1,0 +1,61 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>nuevoEntrenamiento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">nuevoEntrenamiento</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id = "nuevoEntrenamiento">
+    <p>02/06/2024</p>
+    <h2>Nuevo entrenamiento</h2>
+
+    <ion-checkbox>Completado</ion-checkbox>
+
+    <p>Introduce el tiempo</p>
+    <ion-picker>
+      <ion-picker-column value="00">
+        <ion-picker-column-option value="" disabled="false">Horas</ion-picker-column-option>
+        <ion-picker-column-option value="00">00</ion-picker-column-option>
+
+      </ion-picker-column>
+      <ion-picker-column value="30">
+        <ion-picker-column-option value="" disabled="false">Minutos</ion-picker-column-option>
+        <ion-picker-column-option value="30">30</ion-picker-column-option>
+   
+      </ion-picker-column>
+      <ion-picker-column value="25">
+        <ion-picker-column-option value="" disabled="false">Segundos</ion-picker-column-option>
+        <ion-picker-column-option value="25">25</ion-picker-column-option>
+      </ion-picker-column>
+    </ion-picker>
+
+
+    <ion-list>
+      <ion-item>
+        <ion-select placeholder="Intensidad">
+          <div slot="label">Intensidad</div>
+          <ion-select-option value="baja">Baja</ion-select-option>
+          <ion-select-option value="media">Media</ion-select-option>
+          <ion-select-option value="alta">Alta</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-textarea label="Sensaciones" labelPlacement="floating" fill="outline" placeholder="Escribe tus sensaciones sobre el entrenamiento realizado"></ion-textarea>
+
+    <p>---------Especificaciones---------</p>
+
+    <ion-button [routerLink]="['/calendario']"><ion-icon slot="start" name="image-outline"></ion-icon>Subir imagenes</ion-button>
+
+    <ion-textarea label="Entrenamiento" labelPlacement="floating" fill="outline" placeholder="Indica tu entrenamiento realizado"></ion-textarea>
+
+    <ion-button [routerLink]="['/calendario']">Guardar</ion-button>
+  </div>
+
+</ion-content>
