@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+  </ion-header>
+
+  <div id="container">
+
+    <ion-img src="assets/imagenes/LogoAPPGRANDEE.PNG"></ion-img>
+
+    <ion-segment [(ngModel)]="selectTabs">
+      <ion-segment-button value="registrarse">
+        <ion-label>Registrarse</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="iniciarSesion">
+        <ion-label>Iniciar sesión</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    
+
+    <div *ngIf="selectTabs == 'registrarse'">
+      <strong>Crear cuenta</strong>
+      <ion-input name="nombreUsuario" value="" type="text" color="secondary" placeholder="Nombre de usuario" autofocus required><ion-icon slot="start" name="person"></ion-icon></ion-input>
+      <ion-input name="email" value="" type="email" color="secondary" placeholder="Email" required><ion-icon slot="start" name="mail"></ion-icon></ion-input>
+      <ion-input name="contrasenya" value="" type="password" color="secondary" placeholder="Contraseña" autofocus required><ion-icon slot="start" name="ellipsis-horizontal"></ion-icon><ion-input-password-toggle slot="end"></ion-input-password-toggle></ion-input>
+      <ion-input name="repetirContasenya" value="" type="password" color="secondary" placeholder="Repetir contraseña" autofocus required><ion-icon slot="start" name="ellipsis-horizontal"></ion-icon><ion-input-password-toggle slot="end"></ion-input-password-toggle></ion-input>
+      <ion-button [routerLink]="['/home']">Comenzar</ion-button>
+    </div>
+    
+    <div *ngIf="selectTabs == 'iniciarSesion'">
+      <strong>¡Qué alegria tenerte de vuelta!</strong>
+      <p>Completa la información a continuación para acceder a su cuenta</p>
+      <ion-input name="email" value="" type="email" color="secondary" placeholder="Email" required><ion-icon slot="start" name="mail"></ion-icon></ion-input>
+      <ion-input name="contrasenya" value="" type="password" color="secondary" placeholder="Contraseña" autofocus required><ion-icon slot="start" name="ellipsis-horizontal"></ion-icon><ion-input-password-toggle slot="end"></ion-input-password-toggle></ion-input>
+      <ion-button [routerLink]="['/home']">Acceder</ion-button>
+    </div>
+
+  </div>
+
+</ion-content>
