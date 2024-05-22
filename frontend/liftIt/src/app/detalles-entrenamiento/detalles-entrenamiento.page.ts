@@ -7,15 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetallesEntrenamientoPage implements OnInit {
 
-  slideOpts = {
-    initialSlide: 0,
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 3000
-    }
-  };
-
   images = [
     'assets/imagenes/pakozoic1.png',
     'assets/imagenes/pakozoik2.png',

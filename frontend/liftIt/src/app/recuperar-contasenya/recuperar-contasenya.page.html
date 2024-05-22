@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>recuperarContasenya</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">recuperarContasenya</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="containerRecuperarContrasenya">
+
+    <ion-img src="assets/imagenes/LogoAPPGRANDEE.PNG"></ion-img>
+
+      <strong>Recuperar contraseña</strong>
+      <p>Completa la información de su correo electronico para que podamos contactar con usted y ayudarlo a recuperar su contraseña</p>
+      <ion-input name="email" value="" type="email" color="secondary" placeholder="Email" required><ion-icon slot="start" name="mail"></ion-icon></ion-input>
+      
+      <ion-button [routerLink]="['/calendario']">Enviar</ion-button>
+  </div>
+
+</ion-content>

@@ -28,4 +28,26 @@
 
   <ion-button [routerLink]="['/nuevo-entrenamiento']"><ion-icon slot="start" name="add-outline"></ion-icon>Añadir</ion-button>
 
+
+  <ion-tabs>
+    <ion-row>
+      <ion-button [routerLink]="['/pagina-perfil']"><ion-icon slot="start" name="person-outline"></ion-icon>Perfil</ion-button>
+
+      <ion-button [routerLink]="['/calendario']"><ion-icon slot="start" name="calendar-outline"></ion-icon>Calendario</ion-button>
+
+    </ion-row>
+
+    
+
+    <!--<ion-tab-bar slot="bottom">
+      <ion-tab-button tab="calendario">
+        <ion-icon name="calendar-outline"></ion-icon>
+        Calendario
+      </ion-tab-button>
+      <ion-tab-button tab="paginaPerfil">
+        <ion-icon name="person-outline"></ion-icon>
+        Perfil
+      </ion-tab-button>
+    </ion-tab-bar> -->
+  </ion-tabs>
 </ion-content>

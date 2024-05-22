@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>paginaPerfil</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="calendario"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">paginaPerfil</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item class="d-flex align-items-center">
+    <ion-avatar class="mr-3">
+      <img alt="Silhouette of a person's head" src="assets/imagenes/perfilPako.png" />
+    </ion-avatar>
+    <ion-label>
+      <h2 class="mb-1">pakozoik&#64;hotmail.com</h2>
+      <p class="mb-0">Pakozoik</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-button [routerLink]="['/editar-perfil']" class="mt-3 btn btn-primary"><ion-icon slot="start" name="pencil-outline"></ion-icon>Editar perfil</ion-button>
+  <ion-button [routerLink]="['/calendario']" class="mt-2 btn btn-secondary"><ion-icon slot="start" name="help-circle-outline"></ion-icon>Help Center</ion-button>
+
+  <!-- Datos del usuario -->
+  <ion-list lines="none" class="mt-4">
+    <ion-item>
+      <ion-label>Email:</ion-label>
+      <ion-input type="text" value="{{ email }}" disabled></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Idioma:</ion-label>
+      <ion-input type="text" value="{{ idioma }}" disabled></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tema:</ion-label>
+      <ion-input type="text" value="{{ tema }}" disabled></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Versión:</ion-label>
+      <ion-input type="text" value="{{ version }}" disabled></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
