@@ -3,10 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
     redirectTo: 'inicio',
     pathMatch: 'full'
@@ -22,6 +18,14 @@ const routes: Routes = [
   {
     path: 'nuevo-entrenamiento',
     loadChildren: () => import('./nuevo-entrenamiento/nuevo-entrenamiento.module').then( m => m.NuevoEntrenamientoPageModule)
+  },
+  {
+    path: 'detalles-entrenamiento',
+    loadChildren: () => import('./detalles-entrenamiento/detalles-entrenamiento.module').then( m => m.DetallesEntrenamientoPageModule)
+  },
+  {
+    path: 'editar-entrenamiento',
+    loadChildren: () => import('./editar-entrenamiento/editar-entrenamiento.module').then( m => m.EditarEntrenamientoPageModule)
   },
 ];
 

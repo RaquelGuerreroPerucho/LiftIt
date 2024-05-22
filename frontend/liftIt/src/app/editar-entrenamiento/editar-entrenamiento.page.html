@@ -1,22 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>nuevoEntrenamiento</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="calendario"></ion-back-button>
-      </ion-buttons>
+    <ion-title>editarEntrenamiento</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">nuevoEntrenamiento</ion-title>
+      <ion-title size="large">editarEntrenamiento</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id = "nuevoEntrenamiento">
+  <div id = "editarEntrenamiento">
     <p>02/06/2024</p>
-    <h2>Nuevo entrenamiento</h2>
+    <h2>Editar entrenamiento</h2>
 
     <ion-checkbox>Completado</ion-checkbox>
 
@@ -60,5 +57,6 @@
 
     <ion-button [routerLink]="['/calendario']">Guardar</ion-button>
   </div>
+
 
 </ion-content>
