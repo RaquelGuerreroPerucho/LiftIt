@@ -2,6 +2,24 @@
   <ion-toolbar>
     <ion-title>Calendario</ion-title>
   </ion-toolbar>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-end">
+      <ion-col size="3">
+        <ion-chip [routerLink]="['/pagina-perfil']">
+          <ion-avatar>
+            <img
+              alt="Silhouette of a person's head"
+              src="assets/imagenes/perfilPako.png"
+            />
+          </ion-avatar>
+          <ion-label>Pakozoik</ion-label>
+        </ion-chip>
+      </ion-col>
+      <ion-col size="2"></ion-col>
+
+    </ion-row>
+  </ion-grid>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -13,41 +31,16 @@
 
   <ion-datetime locale="es-ES" color="rose" presentation="date"></ion-datetime>
 
-  <ion-card>
+  <ion-card [routerLink]="['/detalles-entrenamiento']">
     <ion-card-header>
       <ion-card-title>Entrenamiento del dia</ion-card-title>
       <ion-card-subtitle>COMPLETADO</ion-card-subtitle>
     </ion-card-header>
-  
-    <ion-card-content>
-      00:45:35
-    </ion-card-content>
-    <ion-button [routerLink]="['/detalles-entrenamiento']"><ion-icon slot="start" name="add-outline"></ion-icon>detalles entrenamiento</ion-button>
 
+    <ion-card-content> 00:45:35 </ion-card-content>
   </ion-card>
 
-  <ion-button [routerLink]="['/nuevo-entrenamiento']"><ion-icon slot="start" name="add-outline"></ion-icon>Añadir</ion-button>
-
-
-  <ion-tabs>
-    <ion-row>
-      <ion-button [routerLink]="['/pagina-perfil']"><ion-icon slot="start" name="person-outline"></ion-icon>Perfil</ion-button>
-
-      <ion-button [routerLink]="['/calendario']"><ion-icon slot="start" name="calendar-outline"></ion-icon>Calendario</ion-button>
-
-    </ion-row>
-
-    
-
-    <!--<ion-tab-bar slot="bottom">
-      <ion-tab-button tab="calendario">
-        <ion-icon name="calendar-outline"></ion-icon>
-        Calendario
-      </ion-tab-button>
-      <ion-tab-button tab="paginaPerfil">
-        <ion-icon name="person-outline"></ion-icon>
-        Perfil
-      </ion-tab-button>
-    </ion-tab-bar> -->
-  </ion-tabs>
+  <ion-button [routerLink]="['/nuevo-entrenamiento']"
+    ><ion-icon slot="start" name="add-outline"></ion-icon>Añadir</ion-button
+  >
 </ion-content>

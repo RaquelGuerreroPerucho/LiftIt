@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DetallesEntrenamientoPageRoutingModule } from './detalles-entrenamiento-routing.module';
 
 import { DetallesEntrenamientoPage } from './detalles-entrenamiento.page';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { DetallesEntrenamientoPage } from './detalles-entrenamiento.page';
     IonicModule,
     DetallesEntrenamientoPageRoutingModule
   ],
-  declarations: [DetallesEntrenamientoPage]
+  declarations: [DetallesEntrenamientoPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class DetallesEntrenamientoPageModule {}

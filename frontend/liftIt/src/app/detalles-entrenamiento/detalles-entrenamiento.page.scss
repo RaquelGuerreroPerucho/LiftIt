@@ -13,3 +13,15 @@
     color: #fff;
     text-align: center;
   }
+
+  swiper-container{
+    width: 100%;
+    height: auto;
+  }
+
+  swiper-slide{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }

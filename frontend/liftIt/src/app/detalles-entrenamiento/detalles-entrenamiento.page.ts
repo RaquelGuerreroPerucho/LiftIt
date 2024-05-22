@@ -7,13 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetallesEntrenamientoPage implements OnInit {
 
-  images = [
+  images=[
     'assets/imagenes/pakozoic1.png',
     'assets/imagenes/pakozoik2.png',
-    'assets/imagenes/pakozoik3.png'
+    'assets/imagenes/pakozoik3.png',
   ];
 
   constructor() { }
+
+  swiperSliderChanged(e: any){
+    console.log('changed: ',e);
+  }
+
+
 
   ngOnInit() {
   }
