@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Preferences } from '@capacitor/preferences';
+
 
 @Component({
   selector: 'app-calendario',
@@ -10,6 +12,9 @@ export class CalendarioPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('El token es:', Preferences.get({
+      key: 'userToken'
+    }));
   }
 
 }

@@ -21,19 +21,19 @@
 
     <div *ngIf="selectTabs === 'registrarse'">
       <strong>Crear cuenta</strong>
-      <ion-input name="nombreUsuario" value="" type="text" color="secondary" placeholder="Nombre de usuario" autofocus required><ion-icon slot="start" name="person"></ion-icon></ion-input>
-      <ion-input name="email" value="" type="email" color="secondary" placeholder="Email" required><ion-icon slot="start" name="mail"></ion-icon></ion-input>
-      <ion-input name="contrasenya" value="" type="password" color="secondary" placeholder="Contraseña" autofocus required><ion-icon slot="start" name="ellipsis-horizontal"></ion-icon><ion-input-password-toggle slot="end"></ion-input-password-toggle></ion-input>
-      <ion-input name="repetirContasenya" value="" type="password" color="secondary" placeholder="Repetir contraseña" autofocus required><ion-icon slot="start" name="ellipsis-horizontal"></ion-icon><ion-input-password-toggle slot="end"></ion-input-password-toggle></ion-input>
-      <ion-button [routerLink]="['/calendario']">Comenzar</ion-button>
+      <ion-input name="nombreUsuario" [(ngModel)]="nombreUsuario" type="text" color="secondary" placeholder="Nombre de usuario" autofocus required><ion-icon slot="start" name="person"></ion-icon></ion-input>
+      <ion-input name="email" [(ngModel)]="email" type="email" color="secondary" placeholder="Email" required><ion-icon slot="start" name="mail"></ion-icon></ion-input>
+      <ion-input name="contrasenya" [(ngModel)]="contrasenya" type="password" color="secondary" placeholder="Contraseña" autofocus required><ion-icon slot="start" name="ellipsis-horizontal"></ion-icon><ion-input-password-toggle slot="end"></ion-input-password-toggle></ion-input>
+      <ion-input name="repetirContasenya" [(ngModel)]="repetirContasenya" type="password" color="secondary" placeholder="Repetir contraseña" autofocus required><ion-icon slot="start" name="ellipsis-horizontal"></ion-icon><ion-input-password-toggle slot="end"></ion-input-password-toggle></ion-input>
+      <ion-button (click)="registrarse()">Comenzar</ion-button>
     </div>
     
     <div *ngIf="selectTabs === 'iniciarSesion'">
       <strong>¡Qué alegria tenerte de vuelta!</strong>
       <p>Completa la información a continuación para acceder a su cuenta</p>
-      <ion-input name="email" value="" type="email" color="secondary" placeholder="Email" required><ion-icon slot="start" name="mail"></ion-icon></ion-input>
-      <ion-input name="contrasenya" value="" type="password" color="secondary" placeholder="Contraseña" autofocus required><ion-icon slot="start" name="ellipsis-horizontal"></ion-icon><ion-input-password-toggle slot="end"></ion-input-password-toggle></ion-input>
-      <ion-button [routerLink]="['/calendario']">Acceder</ion-button>
+      <ion-input name="email" [(ngModel)]="emailLogin" type="email" color="secondary" placeholder="Email" required><ion-icon slot="start" name="mail"></ion-icon></ion-input>
+      <ion-input name="contrasenya" [(ngModel)]="contrasenyaLogin" type="password" color="secondary" placeholder="Contraseña" autofocus required><ion-icon slot="start" name="ellipsis-horizontal"></ion-icon><ion-input-password-toggle slot="end"></ion-input-password-toggle></ion-input>
+      <ion-button (click)="login()">Acceder</ion-button>
 
       <ion-router-link [routerLink]="['/recuperar-contasenya']">
         ¿Has olvidado la contraseña?

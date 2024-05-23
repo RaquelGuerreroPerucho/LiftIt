@@ -34,11 +34,20 @@ public class TrainingModel {
     @Column(name = "sensacion")
     private String sensaciones;
 
-    @Column(name = "estado")
-    private String estado;
+    @Column(name = "calentamiento")
+    private String calentamiento;
 
-    @Column(name = "descripcion")
-    private String descripcion;
+    @Column(name = "ejerPrincipales")
+    private String ejerPrincipales;
+
+    @Column(name = "ejerComplementarios")
+    private String ejerComplementarios;
+
+    @Column(name = "core")
+    private String core;
+
+    @Column(name = "enfriamineto")
+    private String enfriamiento;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
