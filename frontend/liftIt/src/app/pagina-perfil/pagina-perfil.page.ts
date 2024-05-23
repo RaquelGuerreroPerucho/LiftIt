@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Preferences } from '@capacitor/preferences';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pagina-perfil',
@@ -12,9 +14,16 @@ export class PaginaPerfilPage implements OnInit {
   tema: string = "";
   version: string="";
 
-  constructor() { }
+  constructor(private navCtrl : NavController) { }
 
   ngOnInit() {
   }
 
-}
+  navegarAlInicio(){
+    this.removeToken();
+    this.navCtrl.navigateForward('inicio');
+  }
+
+  removeToken = async () => {
+    await Preferences.remove({ key: 'userToken' });}
+};

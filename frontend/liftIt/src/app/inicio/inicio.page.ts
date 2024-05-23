@@ -1,3 +1,5 @@
+
+import { Preferences } from '@capacitor/preferences';
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../services/usuario.service';
 import { NavController } from '@ionic/angular';
@@ -12,7 +14,7 @@ import { of } from 'rxjs';
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
 })
-export class InicioPage{
+export class InicioPage implements OnInit{
 
   nombreUsuario : string = "";
   email : string = "";
@@ -30,7 +32,23 @@ export class InicioPage{
     
    }
 
-  registrarse(){
+   ngOnInit() {
+    this.checkValue();
+    };
+  
+
+  checkValue = async () => {
+    const { value } = await Preferences.get({ key: 'userToken' });
+    console.log('El token es:', value);
+
+    if (value != null){
+      this.navCtrl.navigateForward('calendario');
+    }
+    
+  };
+
+
+registrarse(){
     console.log(this.nombreUsuario);
     console.log(this.email);
     console.log(this.contrasenya);
@@ -45,16 +63,6 @@ export class InicioPage{
         return of(err);
       })
     ).subscribe();
-/*    
-    this.userSev.registerUser(this.email, this.contrasenya).subscribe(
-      result => {
-        console.log(result);
-      },
-      err => {
-        console.log(err);
-      }
-    );
-    */
   }
 
   login(){
@@ -63,9 +71,15 @@ export class InicioPage{
     console.log(this.contrasenyaLogin);
 
     this.userSev.loginUser(this.emailLogin, this.contrasenyaLogin).pipe(
-      tap(result => {
+      tap(async(result) => {
         console.log(result);
+        const token = result.token;
+        await Preferences.set({
+          key: 'userToken',
+          value: token
+        });
         this.navCtrl.navigateForward('calendario');
+
       }),
       catchError(err => {
         console.error(err);
