@@ -1,0 +1,92 @@
+.full-background {
+  --background: #5dbd96;
+}
+
+.custom-margin-top {
+  margin-top: 150px;
+  margin-left: 8%;
+  margin-right: 8%;
+}
+
+.custom-rounded-img {
+  border-radius: 8% !important;
+  overflow: hidden;
+}
+
+.card-wrapper {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 150px);
+  margin-top: -63px;
+}
+
+.card-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  height: 100%;
+  background-color: black;
+  color: white;
+  border-radius: 5%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+ion-segment-button {
+  margin-top: 20%;
+  --background: transparent;
+  --color: grey;
+  --color-checked: #ffffff;
+  --indicator-color: #b5a2e8;
+  --indicator-height: 1px;
+  --indicator-position: bottom;
+}
+
+ion-segment-button::part(indicator) {
+  width: 80%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--indicator-color);
+  height: var(--indicator-height);
+}
+
+.h3-like {
+  font-size: 18px;
+}
+
+.imput-wrapper {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.custom-input {
+  border: 1px solid white;
+  background-color: transparent;
+  border-radius: 25px;
+  color: white;
+  --padding-start: 10px;
+}
+
+.btn-purple {
+  background-color: #b5a2e8;
+}
+
+.link-bold-white {
+  color: white;
+  font-weight: bold;
+}
+
