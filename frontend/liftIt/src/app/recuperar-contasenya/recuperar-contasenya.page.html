@@ -1,27 +1,55 @@
 <ion-header [translucent]="true">
-   <ion-toolbar>
-    <ion-title>Recuperar contraseña</ion-title>
+  <ion-toolbar class="full-background" >
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="inicio"></ion-back-button>
-    </ion-buttons>  
+      <ion-back-button style="color: white" defaultHref="calendario"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="full-background">
-  <ion-header collapse="condense">
-    <ion-toolbar style="--border-width: 0;">
+  <ion-header class="full-background" collapse="condense">
+    <ion-toolbar class="full-background">
     </ion-toolbar>
   </ion-header>
 
-  <div id="containerRecuperarContrasenya">
+  <div id="container" class="container">
+ 
+    <div class="text-center custom-margin-top">
+      <ion-img
+        class="rounded img-fluid mb-4 custom-rounded-img"
+        src="assets/imagenes/LogoAPPGRANDEE.PNG"
+      ></ion-img>
+    </div>
 
-    <ion-img src="assets/imagenes/LogoAPPGRANDEE.PNG"></ion-img>
+    <div class="card-wrapper">
+      <div class="card-container">
 
-      <strong>Recuperar contraseña</strong>
-      <p>Completa la información de su correo electronico para que podamos contactar con usted y ayudarlo a recuperar su contraseña</p>
-      <ion-input name="email" value="" type="email" color="secondary" placeholder="Email" required><ion-icon slot="start" name="mail"></ion-icon></ion-input>
-      
-      <ion-button [routerLink]="['/calendario']">Enviar</ion-button>
+        <div  class="mt-4">
+          <div class="mx-4">
+            <!-- Agrega márgenes a los lados -->
+            <h1 class="text-bold">Recuperar contraseña</h1>
+            <p style="color: #999999">
+              Completa la información de su correo electronico para que podamos contactar con
+              usted y ayudarlo a recuperar
+              su contraseña
+            </p>
+          </div>
+         
+          <form class="px-4">
+            <div class="form-group mb-3">
+              <ion-input name="email" value="" type="email" color="secondary" class="custom-input" placeholder="Email"
+                required><ion-icon slot="start" name="mail"></ion-icon></ion-input>
+            </div>
+
+            <div class="text-center mt-3">
+              <button
+              [routerLink]="['/calendario']" class="btn btn-purple btn-md rounded-pill px-4" >
+              Enviar
+            </button>
+            </div>            
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-
 </ion-content>

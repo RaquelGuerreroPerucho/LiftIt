@@ -78,6 +78,7 @@ ion-segment-button::part(indicator) {
   background-color: transparent;
   border-radius: 25px;
   color: white;
+  --padding-start: 10px;
 }
 
 .btn-purple {
@@ -88,3 +89,4 @@ ion-segment-button::part(indicator) {
   color: white;
   font-weight: bold;
 }
+

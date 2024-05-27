@@ -12,10 +12,11 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  registerUser(email: string, password: string): Observable<any>{
+  registerUser(email: string, password: string, username: string, preguntaSeguridad: string, respuestaSeguridad: string): Observable<any>{
     const url = `${this.baseUrl}/auth/register`;
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const body = JSON.stringify({email,password});
+    const body = JSON.stringify({email,password,username, preguntaSeguridad, respuestaSeguridad});
+    console.log(body)
 
     return this.http.post(url,body,{headers});
   }

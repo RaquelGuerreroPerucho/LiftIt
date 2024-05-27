@@ -45,6 +45,34 @@
                 required
               ></ion-input>
             </div>
+
+            <div class="form-group mb-3">
+              <ion-select
+                name="preguntaSeguridad"
+                [(ngModel)]="preguntaSeguridad"
+                class="custom-input"
+                placeholder="Pregunta de seguridad"
+                required
+              >
+                <ion-select-option value="nombreMascota">¿Cuál es el nombre de tu primera mascota?</ion-select-option>
+                <ion-select-option value="ciudadNacimiento">¿En qué ciudad naciste?</ion-select-option>
+                <ion-select-option value="escuelaPrimaria">¿Cuál es el nombre de tu escuela primaria?</ion-select-option>
+                <ion-select-option value="primerCoche">¿Cuál fue la marca de tu primer coche?</ion-select-option>
+                <ion-select-option value="nombrePadre">¿Cuál es el segundo nombre de tu padre?</ion-select-option>
+              </ion-select>
+            </div>            
+
+            <div class="form-group mb-3">
+              <ion-input
+                name="respuestaSeguridad"
+                [(ngModel)]="respuestaSeguridad"
+                type="text"
+                class="custom-input"
+                placeholder="Respuesta a la pregunta"
+                required
+              ></ion-input>
+            </div>
+
             <div class="form-group mb-3">
               <ion-input
                 name="contrasenya"
@@ -53,7 +81,7 @@
                 class="custom-input"
                 placeholder="Contraseña"
                 required
-              ></ion-input>
+              ><ion-input-password-toggle slot="end" color="light"></ion-input-password-toggle></ion-input>
             </div>
             <div class="form-group mb-3">
               <ion-input
@@ -63,13 +91,13 @@
                 class="custom-input"
                 placeholder="Repetir contraseña"
                 required
-              ></ion-input>
+              ><ion-input-password-toggle slot="end" color="light"></ion-input-password-toggle></ion-input>
             </div>
             <div class="text-center mt-3">
               <button
                 class="btn btn-purple btn-md rounded-pill px-4"
                 style="color: white"
-              >
+                (click)="registrarse()">
                 Comenzar
               </button>
             </div>
@@ -103,13 +131,13 @@
                 class="custom-input"
                 placeholder="Contraseña"
                 required
-              ></ion-input>
+              ><ion-input-password-toggle slot="end" color="light"></ion-input-password-toggle></ion-input>
             </div>
             <div class="text-center mt-3">
               <button
                 class="btn btn-purple btn-md rounded-pill px-4"
                 style="color: white"
-              >
+                (click)="login()">
                 Acceder
               </button>
             </div>
