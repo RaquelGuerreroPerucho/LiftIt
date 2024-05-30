@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -32,9 +33,9 @@ public class TrainingService {
         trainingRepository.deleteById(id);
     }
 
-    public List<TrainingModel> getByPage(Pageable pageable) {
-        Page<TrainingModel> pageResult = trainingRepository.findAll(pageable);
-        return pageResult.getContent();
+    public List<TrainingModel> findByUserId(Long id) {
+        return trainingRepository.findByUserId(id);
     }
+
 }
 

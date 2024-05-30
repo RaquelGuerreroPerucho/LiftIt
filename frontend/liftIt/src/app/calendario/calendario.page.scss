@@ -1,0 +1,82 @@
+.full-background {
+  --background: black;
+}
+
+.custom-datetime-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-datetime {
+  --color: black;
+  --ion-color-primary: #5dbd96;
+  --background: #818181ec;
+  --border-radius: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  &:not(.datetime-placeholder) {
+    color: #ffffff;
+  }
+}
+.white-text {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.white-bold{
+  color: white;
+  font-weight: bold;
+}
+
+.gray-background{
+  background-color: #5dbd96;
+}
+
+
+.custom-card {
+  border-radius: 20px;
+  background-color: #5dbd96;
+  color: white; /* Cambia el color del texto por defecto a blanco */
+}
+
+.custom-card ion-card-title {
+  color: white;
+  margin-left: 20px; /* Ajusta el margen según tus necesidades */
+}
+
+.custom-subtitle {
+  display: inline-block;
+  padding: 2px 8px;
+  background-color: #B5A2E8;
+  color: black; /* Color del texto de la etiqueta */
+  margin: 0; /* Ajusta el margen según tus necesidades */
+}
+
+.custom-content {
+  color: black;
+  margin: 0; /* Ajusta el margen según tus necesidades */
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  padding: 0; /* Ajusta el relleno según tus necesidades */
+}
+
+.btn-purple {
+  background-color: #b5a2e8;
+}
+
+.fc-day, .fc-content {
+  color: white;
+  background-color: #5dbd96;
+
+}
+
+.fc-event{
+  color: black;
+}
+

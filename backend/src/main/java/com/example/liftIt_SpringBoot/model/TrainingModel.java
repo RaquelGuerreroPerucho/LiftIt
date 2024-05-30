@@ -28,11 +28,14 @@ public class TrainingModel {
     @Column(name = "duracion")
     private Time duracion;
 
+    @Column(name = "Estado")
+    private Boolean estado;
+
     @Column(name = "intensidad")
     private String intensidad;
 
     @Column(name = "sensacion")
-    private String sensaciones;
+    private String sensacion;
 
     @Column(name = "calentamiento")
     private String calentamiento;

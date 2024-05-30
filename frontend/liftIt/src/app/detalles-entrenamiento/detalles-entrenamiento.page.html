@@ -1,6 +1,10 @@
 
 <ion-content [fullscreen]="true">
 
+  <ion-buttons slot="start">
+    <ion-back-button style="color: white" defaultHref="calendario"></ion-back-button>
+  </ion-buttons>
+
     <swiper-container
       (slidechange)="swiperSliderChanged($event)"
       [loop]="true"

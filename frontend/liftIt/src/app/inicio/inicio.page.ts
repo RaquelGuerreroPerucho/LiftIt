@@ -1,12 +1,13 @@
 
 import { Preferences } from '@capacitor/preferences';
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../services/usuario.service';
+import { AuthService } from '../services/auth.service';
 import { NavController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { UserService } from '../services/usuario.service';
 
 
 @Component({
@@ -14,44 +15,44 @@ import { of } from 'rxjs';
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
 })
-export class InicioPage implements OnInit{
+export class InicioPage implements OnInit {
 
-  nombreUsuario : string = "";
-  email : string = "";
-  preguntaSeguridad : string="";
-  respuestaSeguridad : string="";
-  contrasenya : string = "";
-  repetirContasenya : string = "";
+  nombreUsuario: string = "";
+  email: string = "";
+  preguntaSeguridad: string = "";
+  respuestaSeguridad: string = "";
+  contrasenya: string = "";
+  repetirContasenya: string = "";
 
-  emailLogin : string = "";
-  contrasenyaLogin : string = "";
+  emailLogin: string = "";
+  contrasenyaLogin: string = "";
 
-  userSev : UsuarioService;
+  authSev: AuthService;
+  userSev: UserService;
 
-  constructor(private usuarioService : UsuarioService, private navCtrl : NavController, private toastController: ToastController){
+  constructor(private AuthService: AuthService, private navCtrl: NavController, private toastController: ToastController, private UserService: UserService) {
 
-    this.userSev = usuarioService;
-    
-   }
+    this.authSev = AuthService;
+    this.userSev = UserService;
 
+  }
 
-
-   ngOnInit() {
+  ngOnInit() {
     this.checkValue();
-    };
-  
+  };
+
 
   checkValue = async () => {
     const { value } = await Preferences.get({ key: 'userToken' });
     console.log('El token es:', value);
 
-    if (value != null){
+    if (value != null) {
       this.navCtrl.navigateForward('calendario');
     }
-    
+
   };
 
-  async presentToast(message: string){
+  async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
       duration: 2000,
@@ -61,7 +62,7 @@ export class InicioPage implements OnInit{
   }
 
 
-  registrarse(){
+  registrarse() {
     console.log(this.nombreUsuario);
     console.log(this.email);
     console.log(this.contrasenya);
@@ -71,13 +72,13 @@ export class InicioPage implements OnInit{
 
     // Comprobar que los campos de pregunta y respuesta de seguridad están rellenados
     if (this.preguntaSeguridad === "" || this.respuestaSeguridad === "") {
-        this.presentToast('Por favor, rellene los campos de pregunta y respuesta de seguridad');
-        return;
+      this.presentToast('Por favor, rellene los campos de pregunta y respuesta de seguridad');
+      return;
     }
 
     // Comprobar que el nombre de usuario es válido
     const usernameRegex = /^\S*$/;
-    if(!usernameRegex.test(this.nombreUsuario)){
+    if (!usernameRegex.test(this.nombreUsuario)) {
       this.presentToast('El nombre de usuario no debe contener espacios');
       return;
     }
@@ -86,54 +87,85 @@ export class InicioPage implements OnInit{
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(this.email)) {
       this.presentToast('El email no es válido');
-        return;
+      return;
     }
 
     // Comprobar que las contraseñas coinciden
     if (this.contrasenya !== this.repetirContasenya) {
       this.presentToast('Las contraseñas no coinciden');
-        return;
+      return;
     }
 
     // Comprobar que la contraseña es segura
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     if (!passwordRegex.test(this.contrasenya)) {
       this.presentToast('La contraseña no es segura');
-        return;
+      return;
     }
 
-    this.userSev.registerUser(this.email, this.contrasenya, this.nombreUsuario, this.preguntaSeguridad, this.respuestaSeguridad).pipe(
+    this.authSev.registerUser(this.email, this.contrasenya, this.nombreUsuario, this.preguntaSeguridad, this.respuestaSeguridad).pipe(
       tap(result => {
         console.log(result);
-        this.navCtrl.navigateForward('calendario');
+        this.loginWithParams(this.email,this.contrasenya)
       }),
       catchError(err => {
         console.error(err);
         return of(err);
       })
     ).subscribe();
-}
-  login(){
-    
-    console.log(this.emailLogin);
-    console.log(this.contrasenyaLogin);
+  }
 
-    this.userSev.loginUser(this.emailLogin, this.contrasenyaLogin).pipe(
-      tap(async(result) => {
-        console.log(result);
-        const token = result.token;
-        await Preferences.set({
-          key: 'userToken',
-          value: token
-        });
-        this.navCtrl.navigateForward('calendario');
 
+  loginWithParams(email: string, pass : string)
+  {
+    console.log(email);
+    console.log(pass);
+
+    this.authSev.loginUser(email, pass).pipe(
+      tap(async (result) => {
+        console.log(result.token);
+        // Obtén los datos del usuario
+        this.userSev.getUserByEmail(email, result.token).pipe(
+          tap(async (user) => {
+            const token = result.token;
+            await Preferences.set({
+              key: 'userToken',
+              value: token
+            });    
+            console.log(user);
+            await Preferences.set({
+              key: 'userId',
+              value: user.id
+            }); 
+            await Preferences.set({
+              key: 'userEmail',
+              value: user.email
+            }); 
+            await Preferences.set({
+              key: 'userName',
+              value: user.username
+            }); 
+
+            this.navCtrl.navigateForward('calendario');
+          }),
+          catchError(err => {
+            this.presentToast('No se ha podido recuperar usuario');
+        console.log(result.token);
+            
+            return of(err);
+          })
+        ).subscribe();
       }),
       catchError(err => {
         this.presentToast('Usuario/contraseña incorrectos');
         return of(err);
       })
     ).subscribe();
+  }
+
+
+  login() {
+    this.loginWithParams(this.emailLogin,  this.contrasenyaLogin);
   }
 
   selectTabs = 'registrarse';

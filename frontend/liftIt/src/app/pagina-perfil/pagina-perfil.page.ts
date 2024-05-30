@@ -20,10 +20,14 @@ export class PaginaPerfilPage implements OnInit {
   }
 
   navegarAlInicio(){
-    this.removeToken();
+    this.removeUserData();
     this.navCtrl.navigateForward('inicio');
   }
 
-  removeToken = async () => {
-    await Preferences.remove({ key: 'userToken' });}
-};
+  removeUserData = async () => {
+    await Preferences.remove({ key: 'userToken' });
+    await Preferences.remove({ key: 'userId' });
+    await Preferences.remove({ key: 'userEmail' });
+    await Preferences.remove({ key: 'userName' });
+
+}}

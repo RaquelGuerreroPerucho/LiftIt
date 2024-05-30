@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
@@ -40,13 +41,10 @@ public class TrainingController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping("/getPage/{page}")
-    public ResponseEntity<List<TrainingModel>> getTrainingsByPage(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        List<TrainingModel> trainings = trainingService.getByPage(pageable);
-        return new ResponseEntity<>(trainings, HttpStatus.OK);
+    @GetMapping("/getByUserId/{userId}")
+    public ResponseEntity<List<TrainingModel>> getTrainingsByUserId(@PathVariable Long userId) {
+        List<TrainingModel> trainingList = trainingService.findByUserId(userId);
+        return new ResponseEntity<>(trainingList, HttpStatus.OK);
     }
 }
 

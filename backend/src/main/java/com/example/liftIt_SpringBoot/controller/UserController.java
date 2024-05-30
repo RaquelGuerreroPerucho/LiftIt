@@ -42,6 +42,8 @@ public class UserController {
 
     @GetMapping("/getByEmail/{email}")
     public UserModel getUserByEmail(@PathVariable String email) {
+
+        System.out.println(email);
         return userService.getUserByEmail(email);
     }
 }
