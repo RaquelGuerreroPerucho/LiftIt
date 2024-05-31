@@ -1,62 +1,51 @@
+<ion-content [fullscreen]="true" class="full-background">
+  <div class="forzarBoton">
+    <ion-buttons slot="start">
+      <ion-back-button
+        style="color: white"
+        defaultHref="calendario"
+      ></ion-back-button>
+    </ion-buttons>
+  </div>
 
-<ion-content [fullscreen]="true">
+  <swiper-container
+    (slidechange)="swiperSliderChanged($event)"
+    [loop]="true"
+    [pagination]="true"
+    [zoom]="true"
+  >
+    <swiper-slide *ngFor="let image of images">
+      <img [src]="image" />
+    </swiper-slide>
+  </swiper-container>
 
-  <ion-buttons slot="start">
-    <ion-back-button style="color: white" defaultHref="calendario"></ion-back-button>
-  </ion-buttons>
-
-    <swiper-container
-      (slidechange)="swiperSliderChanged($event)"
-      [loop]="true"
-      [pagination]="true"
-      [zoom]="true">
-
-      <swiper-slide *ngFor="let image of images">
-          <img [src]="image" />
-      </swiper-slide>
-  
-    </swiper-container>
-
-  <ion-button [routerLink]="['/detalles-entrenamiento']">
+  <button class="btn btn-purple border-button btn-sm rounded-pill px-4">
     <ion-icon name="share-social-outline"></ion-icon>
-    Post
-  </ion-button>
+    Share
+  </button>
 
-  <h1>Entrenamiento del dia</h1>
-  <ion-datetime-button datetime="datetime"></ion-datetime-button>
-
-  <ion-modal [keepContentsMounted]="true">
-    <ng-template>
-      <ion-datetime
-        id="datetime"
-        enabled="false"
-        presentation="date"
-      ></ion-datetime>
-    </ng-template>
-  </ion-modal>
-
-  <ion-item-divider></ion-item-divider>
+  <h1 class="white-text float-right mx-4 mb-2">Detalles del entrenamiento</h1>
 
   <ion-grid>
-    <ion-row>
-      <ion-card>
-        <ion-card-content> Completado </ion-card-content>
-      </ion-card>
+      <ion-row>
+        <ion-col size="4">
+          <p class="custom-text">Completado</p>
+        </ion-col>
 
-      <ion-card>
-        <ion-card-content> 00:45:35 </ion-card-content>
-      </ion-card>
+        <ion-col size="4">
+          <p class="custom-text">00:45:35</p>
+        </ion-col>
 
-      <ion-card>
-        <ion-card-content> Intensidad media </ion-card-content>
-      </ion-card>
-    </ion-row>
+        <ion-col size="4">
+          <p class="custom-text">Intensidad media</p>
+        </ion-col>
+      </ion-row>
   </ion-grid>
 
-  <ion-item-divider></ion-item-divider>
+  <hr class="custom-divider">
 
-  <h4>Sensaciones</h4>
-  <p>
+  <h4 class="float-right mx-4 mb-2" >Sensaciones</h4>
+  <p class="mx-4 mejorar-texto" >
     Durante el entrenamiento de fuerza, mis músculos trabajan intensamente, cada
     repetición es un desafío. A medida que avanzo, la fatiga se acumula, pero mi
     determinación sigue firme. A veces, siento dolor, pero sé que es parte del
@@ -64,11 +53,11 @@
     cada esfuerzo me acerca más a mis metas.
   </p>
 
-  <ion-item-divider></ion-item-divider>
+  <hr class="custom-divider">
 
-  <h4>Entrenamiento realizado</h4>
+  <h4 class="float-right mx-4 mb-2">Entrenamiento realizado</h4>
 
-  <h6>Calentamiento:</h6>
+  <h6 class="float-right mx-4 mb-2">Calentamiento:</h6>
   <ul>
     <li>
       5 minutos de cardio ligero (por ejemplo, trotar o bicicleta estática).
@@ -76,32 +65,33 @@
     <li>Estiramientos dinámicos para preparar los músculos.</li>
   </ul>
 
-  <h6>Ejercicios Principales:</h6>
+  <h6 class="float-right mx-4 mb-2">Ejercicios Principales:</h6>
   <ul>
     <li>Sentadillas: 4 series x 8 repeticiones.</li>
     <li>Press de banca: 4 series x 8 repeticiones.</li>
     <li>Peso muerto: 3 series x 10 repeticiones.</li>
   </ul>
 
-  <h6>Ejercicios Complementarios:</h6>
+  <h6 class="float-right mx-4 mb-2">Ejercicios Complementarios:</h6>
   <ul>
     <li>Lunges: 3 series x 12 repeticiones (cada pierna).</li>
     <li>Pull-ups: 3 series x 8 repeticiones.</li>
     <li>Flexiones de brazos: 3 series x 12 repeticiones.</li>
   </ul>
 
-  <h6>Core:</h6>
+  <h6 class="float-right mx-4 mb-2">Core:</h6>
   <ul>
     <li>Plancha: 3 series de 30 segundos.</li>
     <li>Elevación de piernas colgado: 3 series x 12 repeticiones.</li>
   </ul>
 
-  <h6>Enfriamiento:</h6>
+  <h6 class="float-right mx-4 mb-2">Enfriamiento:</h6>
   <ul>
     <li>Estiramientos estáticos para relajar los músculos trabajados.</li>
     <li>Respiración profunda y relajación.</li>
   </ul>
-
-  <ion-button [routerLink]="['/calendario']">Borrar</ion-button>
-  <ion-button [routerLink]="['/editar-entrenamiento']">Modificar</ion-button>
+  <div class="button-container">
+    <button class="btn btn-purple btn-md rounded-pill px-4" onclick="location.href='/calendario'"> <ion-icon name="trash-outline"></ion-icon>Borrar</button>
+    <button class="btn btn-purple btn-md rounded-pill px-4" onclick="location.href='/editar-entrenamiento'"><ion-icon name="pencil-outline"></ion-icon>Modificar</button>
+  </div>
 </ion-content>

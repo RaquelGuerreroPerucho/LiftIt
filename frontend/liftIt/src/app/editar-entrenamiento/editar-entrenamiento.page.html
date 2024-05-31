@@ -1,65 +1,129 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>editarEntrenamiento</ion-title>
+  <ion-toolbar class="full-background">
+    <ion-buttons slot="start">
+      <ion-back-button
+        style="color: white"
+        defaultHref="calendario"
+      ></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">editarEntrenamiento</ion-title>
-      <ion-buttons slot="start">
-        <ion-back-button style="color: rgb(0, 0, 0)" defaultHref="calendario"></ion-back-button>
-      </ion-buttons>
-    </ion-toolbar>
+<ion-content [fullscreen]="true" class="full-background">
+  <ion-header class="full-background" collapse="condense">
+    <ion-toolbar class="full-background"> </ion-toolbar>
   </ion-header>
 
-  <div id = "editarEntrenamiento">
-    <p>02/06/2024</p>
-    <h2>Editar entrenamiento</h2>
+  <h1 class="white-text float-right mx-4 mb-2">Modificar entrenamiento</h1>
 
-    <ion-checkbox>Completado</ion-checkbox>
+  <div id="container" class="container custom-margin">
+    <div class="card-wrapper">
+      <div class="card-container">
+        <div class="content-wrapper">
+          <p>02/06/2024</p>
 
-    <p>Introduce el tiempo</p>
-    <ion-picker>
-      <ion-picker-column value="00">
-        <ion-picker-column-option value="" disabled="false">Horas</ion-picker-column-option>
-        <ion-picker-column-option value="00">00</ion-picker-column-option>
+          <ion-checkbox>Completado</ion-checkbox>
 
-      </ion-picker-column>
-      <ion-picker-column value="30">
-        <ion-picker-column-option value="" disabled="false">Minutos</ion-picker-column-option>
-        <ion-picker-column-option value="30">30</ion-picker-column-option>
-   
-      </ion-picker-column>
-      <ion-picker-column value="25">
-        <ion-picker-column-option value="" disabled="false">Segundos</ion-picker-column-option>
-        <ion-picker-column-option value="25">25</ion-picker-column-option>
-      </ion-picker-column>
-    </ion-picker>
+          <div class="form-group mb-3 mt-3">
+            <ion-input
+              name="Tiempo"
+              [(ngModel)]="trainingTime"
+              type="text"
+              class="custom-input"
+              placeholder="Tiempo de entrenamiento (HH:mm:ss)"
+              required
+              (ionChange)="validarTiempo()"
+            ></ion-input>
+            <ion-label *ngIf="!esTiempoValido" color="danger"
+              >Formato de tiempo no válido</ion-label
+            >
 
+            <select class="custom-select custom-input" [(ngModel)]="intensidad">
+              <option value="" disabled selected>
+                Intensidad del entrenamiento
+              </option>
+              <option value="baja">Intensidad baja</option>
+              <option value="media">Intensidad media</option>
+              <option value="alta">Intensidad alta</option>
+            </select>
 
-    <ion-list>
-      <ion-item>
-        <ion-select placeholder="Selecciona una opción">
-          <div slot="label">Intensidad</div>
-          <ion-select-option value="baja">Intensidad baja</ion-select-option>
-          <ion-select-option value="media">Intensidad media</ion-select-option>
-          <ion-select-option value="alta">Intensidad alta</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
+            <ion-input
+              name="Sensaciones"
+              [(ngModel)]="sensaciones"
+              type="text"
+              class="custom-input"
+              placeholder="Sensaciones"
+              required
+            ></ion-input>
+          </div>
 
-    <ion-textarea label="Sensaciones" labelPlacement="floating" fill="outline" placeholder="Escribe tus sensaciones sobre el entrenamiento realizado"></ion-textarea>
+          <ion-item-divider class="custom-divider">
+            <ion-label> ESPECIFICACIONES </ion-label>
+          </ion-item-divider>
 
-    <p>---------Especificaciones---------</p>
+          <ion-button [routerLink]="['/calendario']">
+            <ion-icon slot="start" name="image-outline"></ion-icon>
+            Subir imagenes
+          </ion-button>
 
-    <ion-button [routerLink]="['/calendario']"><ion-icon slot="start" name="image-outline"></ion-icon>Subir imagenes</ion-button>
+          <div class="form-group mb-3 mt-3">
+            <ion-input
+              name="Calentamiento"
+              [(ngModel)]="calentamiento"
+              type="text"
+              class="custom-input"
+              placeholder="Calentamiento"
+              required
+            ></ion-input>
 
-    <ion-textarea label="Entrenamiento" labelPlacement="floating" fill="outline" placeholder="Indica tu entrenamiento realizado"></ion-textarea>
+            <ion-input
+              name="Ejercicios principales"
+              [(ngModel)]="ejerciciosPrincipales"
+              type="text"
+              class="custom-input"
+              placeholder="Ejercicios principales"
+              required
+            ></ion-input>
 
-    <ion-button [routerLink]="['/calendario']">Guardar</ion-button>
+            <ion-input
+              name="Ejercicios complementarios"
+              [(ngModel)]="ejerciciosComplementarios"
+              type="text"
+              class="custom-input"
+              placeholder="Ejercicios complementarios"
+              required
+            ></ion-input>
+
+            <ion-input
+              name="Core"
+              [(ngModel)]="core"
+              type="text"
+              class="custom-input"
+              placeholder="Core"
+              required
+            ></ion-input>
+
+            <ion-input
+              name="Enfriamiento"
+              [(ngModel)]="enfriamiento"
+              type="text"
+              class="custom-input"
+              placeholder="Enfriamiento"
+              required
+            ></ion-input>
+          </div>
+
+          <div class="text-center mt-3">
+            <button
+              [routerLink]="['/calendario']"
+              class="btn btn-purple btn-md rounded-pill px-4"
+              style="color: white"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-
 </ion-content>

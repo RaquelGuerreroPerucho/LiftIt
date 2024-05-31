@@ -1,3 +1,21 @@
+.full-background {
+  --background: #5dbd96;
+}
+
+.forzarBoton{
+  position: fixed;
+  top: 60px;
+  left: 20px;
+  z-index: 100;
+  background-color: #B5A2E8;
+  padding: 5px;
+  width: 25%;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .carousel-container {
     height: 100%;
   }
@@ -25,3 +43,60 @@
     align-items: center;
     justify-content: center;
   }
+
+  .btn-purple {
+    background-color: #b5a2e8;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    float: right;
+    margin-right: 20px;
+    color: white;
+    
+  }
+
+  .border-button{
+    border-color: rgb(255, 255, 255);
+    border-radius: 4px;
+
+  }
+
+  .white-text {
+    color: white;
+    font-size: 34px;
+    font-weight: bold;
+    margin-top: 30px
+  }
+
+  .custom-text {
+    border: 1px solid black; /* Añade un borde a cada palabra */
+    border-radius: 25px; /* Hace que el borde sea redondeado */
+    padding: 5px;
+    font-size: 13px; /* Añade un poco de espacio entre el texto y el borde */
+    text-align: center; /* Alinea el texto al centro horizontalmente */
+    display: flex; /* Hace que el contenedor sea un contenedor flex */
+    align-items: center; /* Alinea el texto al centro verticalmente */
+    justify-content: center; /* Alinea el texto al centro horizontalmente */
+    color: white;
+    background-color: black;
+    margin-bottom: 0;
+  }
+
+  .custom-divider {
+    border: 0;
+    height: 10px;
+    background: linear-gradient(to right, transparent, black, transparent);
+    margin: 16px 0;
+  }
+
+  .mejorar-texto{
+    text-align: justify;
+
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px; /* Añade un espacio entre los botones */
+    margin-bottom: 40px;
+  }
+
