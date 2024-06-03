@@ -30,6 +30,8 @@ export class InicioPage implements OnInit {
   authSev: AuthService;
   userSev: UserService;
 
+
+
   constructor(private AuthService: AuthService, private navCtrl: NavController, private toastController: ToastController, private UserService: UserService) {
 
     this.authSev = AuthService;
@@ -128,19 +130,19 @@ export class InicioPage implements OnInit {
         this.userSev.getUserByEmail(email, result.token).pipe(
           tap(async (user) => {
             const token = result.token;
+            
+          
             await Preferences.set({
               key: 'userToken',
               value: token
             });    
             console.log(user);
-            await Preferences.set({
-              key: 'userId',
-              value: user.id
-            }); 
+           
             await Preferences.set({
               key: 'userEmail',
               value: user.email
             }); 
+
             await Preferences.set({
               key: 'userName',
               value: user.username
@@ -157,7 +159,8 @@ export class InicioPage implements OnInit {
         ).subscribe();
       }),
       catchError(err => {
-        this.presentToast('Usuario/contraseña incorrectos');
+      //  this.presentToast('Usuario/contraseña incorrectos');
+        this.presentToast(err);
         return of(err);
       })
     ).subscribe();

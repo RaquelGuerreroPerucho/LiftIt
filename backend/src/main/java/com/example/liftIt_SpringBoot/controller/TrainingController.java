@@ -46,5 +46,11 @@ public class TrainingController {
         List<TrainingModel> trainingList = trainingService.findByUserId(userId);
         return new ResponseEntity<>(trainingList, HttpStatus.OK);
     }
+
+    @GetMapping("/getById/{id}/{email}")
+    public ResponseEntity<TrainingModel> getTrainingById(@PathVariable Long id, String email) {
+        TrainingModel training = trainingService.findById(id);
+        return new ResponseEntity<>(training, HttpStatus.OK);
+    }
 }
 

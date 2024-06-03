@@ -37,5 +37,10 @@ public class TrainingService {
         return trainingRepository.findByUserId(id);
     }
 
+    public TrainingModel findById(Long id) {
+        Optional<TrainingModel> training = trainingRepository.findById(id);
+        return training.orElse(null);
+    }
+
 }
 

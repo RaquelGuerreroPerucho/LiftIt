@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {register} from 'swiper/element/bundle';
+import { DetallesEntrenamientoPage } from './detalles-entrenamiento/detalles-entrenamiento.page';
 
 register();
 
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'nuevo-entrenamiento',
     loadChildren: () => import('./nuevo-entrenamiento/nuevo-entrenamiento.module').then( m => m.NuevoEntrenamientoPageModule)
+  },
+  {
+    path: 'detalles-entrenamiento/:id',
+    component: DetallesEntrenamientoPage
   },
   {
     path: 'detalles-entrenamiento',

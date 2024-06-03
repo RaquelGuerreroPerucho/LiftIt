@@ -25,36 +25,18 @@
 
   <div class="custom-datetime-wrapper">
 
-    <full-calendar #calendar [options]="calendarOptions">cacac</full-calendar>
-
-    <!--<ion-datetime #myDatetime locale="es-ES" presentation="date" class="custom-datetime"></ion-datetime>-->
-  </div>
-  <div class="card-wrapper">
-    <div class="card-container">
-      <ion-card class="custom-card" [routerLink]="['/detalles-entrenamiento']">
-        <ion-card-header>
-          <ion-card-subtitle class="custom-subtitle">{{estadoEntrenamiento}}</ion-card-subtitle>
-        </ion-card-header>
-      
-        <ion-card-title>Entrenamiento del día</ion-card-title>
-
-        <div class="flex-container">
-          
-          <ion-card-content class="custom-content">Hora: {{horaEntrenamiento}}</ion-card-content>
-          <ion-card-content class="custom-content">Tiempo: {{tiempoEntrenamiento}}</ion-card-content>
-        </div>
-      </ion-card>
-    </div>
-
-    <div class="text-center mt-3">
-      <button [routerLink]="['/nuevo-entrenamiento']" class="btn btn-purple btn-md rounded-pill px-4"
-        style="color: white">
-        + Añadir
-      </button>
-    </div>
+    <full-calendar #calendar [options]="calendarOptions"></full-calendar>
 
   </div>
+  <div #cardsContainer class="card-wrapper">
+  </div>
 
+  <div class="text-center mt-3">
+    <button [routerLink]="['/nuevo-entrenamiento']" class="btn btn-purple btn-md rounded-pill px-4"
+      style="color: white">
+      + Añadir
+    </button>
+  </div>
     
 
 

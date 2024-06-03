@@ -1,54 +1,58 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>paginaPerfil</ion-title>
+  <ion-toolbar class="full-background">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="calendario"></ion-back-button>
+      <ion-back-button
+        style="color: white"
+        defaultHref="calendario"
+      ></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">paginaPerfil</ion-title>
-    </ion-toolbar>
+
+<ion-content [fullscreen]="true" class="full-background">
+  <ion-header class="full-background" collapse="condense">
+    <ion-toolbar class="full-background"> </ion-toolbar>
   </ion-header>
 
-  <ion-item class="d-flex align-items-center">
-    <ion-avatar class="mr-3">
-      <img alt="Silhouette of a person's head" src="assets/imagenes/perfilPako.png" />
-    </ion-avatar>
-    <ion-label>
-      <h2 class="mb-1">pakozoik&#64;hotmail.com</h2>
-      <p class="mb-0">Pakozoik</p>
-    </ion-label>
+  <ion-item class="d-flex align-items-center full-background">
+      <ion-avatar class="mr-3 large-avatar">
+        <img alt="Silhouette of a person's head" src="assets/imagenes/perfilPako.png" />
+      </ion-avatar>
+      <ion-label class="profile-info">
+        <h2 class="mb-1">pakozoik&#64;hotmail.com</h2>
+        <p class="mb-0">Pakozoik</p>
+      </ion-label>
   </ion-item>
 
-  <ion-button [routerLink]="['/editar-perfil']" class="mt-3 btn btn-primary"><ion-icon slot="start" name="pencil-outline"></ion-icon>Editar perfil</ion-button>
-  <ion-button [routerLink]="['/calendario']" class="mt-2 btn btn-secondary"><ion-icon slot="start" name="help-circle-outline"></ion-icon>Help Center</ion-button>
-
+  <div class="center-row">
+      <button [routerLink]="['/editar-perfil']" class="style-button">
+        <ion-icon slot="start" name="pencil-outline"></ion-icon>
+      </button>
+      <button [routerLink]="['/calendario']" class="style-button">
+        <ion-icon slot="start" name="help-circle-outline"></ion-icon>
+      </button>
+  </div>
+  
   <!-- Datos del usuario -->
-  <ion-list lines="none" class="mt-4">
-    <ion-item>
-      <ion-label>Email:</ion-label>
-      <ion-input type="text" value="{{ email }}" disabled></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Idioma:</ion-label>
-      <ion-input type="text" value="{{ idioma }}" disabled></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Tema:</ion-label>
-      <ion-input type="text" value="{{ tema }}" disabled></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Versión:</ion-label>
-      <ion-input type="text" value="{{ version }}" disabled></ion-input>
-    </ion-item>
-    <ion-item (click)="navegarAlInicio()">
-      <ion-label>Cerrar sesión</ion-label>
-      <ion-icon name="exit-outline"></ion-icon>
-    </ion-item>
-  </ion-list>
+  <ion-list class="mt-4 no-block ">
+
+      <ion-item class="full-background">
+        <ion-label>Idioma:</ion-label>
+        <ion-input type="text" value="{{ idioma }}" disabled></ion-input>
+      </ion-item>
+      <ion-item class="full-background">
+        <ion-label>Tema:</ion-label>
+        <ion-input type="text" value="{{ tema }}" disabled></ion-input>
+      </ion-item>
+      <ion-item class="full-background">
+        <ion-label>Versión:</ion-label>
+        <ion-input type="text" value="{{ version }}" disabled></ion-input>
+      </ion-item>
+      <ion-item class="full-background" (click)="navegarAlInicio()">
+        <ion-label>Cerrar sesión</ion-label>
+        <ion-icon name="exit-outline"></ion-icon>
+      </ion-item>
+    </ion-list>
 </ion-content>
 

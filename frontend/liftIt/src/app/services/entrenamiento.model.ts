@@ -1,7 +1,7 @@
 import { Time } from "@angular/common";
 
 // training.model.ts
-export interface Training {
+export interface Entrenamiento {
     id: string;
     descripcion: string;
     duracion: Time;
@@ -20,7 +20,7 @@ export interface Training {
   
 }
 
-function logTraining(training: Training) {
+function logTraining(training: Entrenamiento) {
     console.log(`id: ${training.id}`);
     console.log(`descripcion: ${training.descripcion}`);
     console.log(`duracion: ${training.duracion}`);

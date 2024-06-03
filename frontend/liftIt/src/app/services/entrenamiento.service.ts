@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Training } from './training.model';
+import { Entrenamiento } from './entrenamiento.model';
 
 @Injectable({
   providedIn: 'root'
@@ -42,20 +42,31 @@ export class EntrenamientoService {
     return this.http.delete(url, {headers});
   }
 
-  getEntrenamientosUsuario(userId: string, token: string): Observable<Training[]> {
+  getEntrenamientosUsuario(userId: string, token: string): Observable<Entrenamiento[]> {
     console.log("token", token);
 
-    //const url = `${this.baseUrl}/getByUserId/${userId}`;
+    const url = `${this.baseUrl}/getByUserId/${userId}`;
 
-    const url = "http://localhost:8091/trainings/getByUserId/23"
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
 
     console.log(headers);
-    return this.http.get<Training[]>(url, {headers});
+    return this.http.get<Entrenamiento[]>(url, {headers});
   }
+
+  getEntrenamientoById(id: string, token: string, email: string): Observable<Entrenamiento> {
+    const url = `${this.baseUrl}/getById/${id}/${email}`;
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<Entrenamiento>(url, {headers});
+  }
+
 
 
 

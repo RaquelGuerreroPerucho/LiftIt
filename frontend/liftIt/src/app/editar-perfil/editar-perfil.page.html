@@ -1,47 +1,57 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Editar Perfil</ion-title>
+  <ion-toolbar class="full-background">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="calendario"></ion-back-button>
-    </ion-buttons>  
+      <ion-back-button style="color: white" defaultHref="calendario"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-item>
-    <ion-avatar>
-      <img [src]="fotoPerfil" alt="Foto de Perfil">
-    </ion-avatar>
-    <ion-label>
-      <h2>{{ correoPrincipal }}</h2>
-      <p>{{ nombreUsuario }}</p>
-    </ion-label>
+
+
+<ion-content [fullscreen]="true" class="full-background">
+
+  <ion-item class="full-background grid-container">
+    <div class="content">
+      <ion-avatar class="large-avatar">
+        <img [src]="fotoPerfil" alt="Foto de Perfil" />
+      </ion-avatar>
+      <button class="edit-button" (click)="editarFotoPerfil()">
+        Editar Foto de Perfil
+      </button>
+    </div>
   </ion-item>
 
-  <ion-button (click)="editarFotoPerfil()">Editar Foto de Perfil</ion-button>
-
-  <ion-list lines="none">
-    <ion-item>
-      <ion-label position="floating">Correo Electrónico</ion-label>
-      <ion-input type="email" [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Nombre de Usuario</ion-label>
-      <ion-input type="text" [(ngModel)]="nombreUsuario"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Idioma</ion-label>
-      <ion-input type="text" [(ngModel)]="idioma"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Tema</ion-label>
-      <ion-input type="text" [(ngModel)]="tema"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Versión</ion-label>
-      <ion-input type="text" [(ngModel)]="version"></ion-input>
-    </ion-item>
+  <ion-list lines="none" class="no-background">
+    <div class="form-group mb-3 ion-margin-start ion-margin-end">
+      <ion-input class="custom-inputs" type="email" [(ngModel)]="email"></ion-input>
+    </div>
+    <div class="form-group mb-3 ion-margin-start ion-margin-end">
+      <ion-input class="custom-inputs" type="text" [(ngModel)]="nombreUsuario"></ion-input>
+    </div>
+    <div class="form-group mb-3 ion-margin-start ion-margin-end">
+      <ion-select class="custom-inputs" [(ngModel)]="idioma">
+        <ion-select-option value="es">
+          <img src="assets/imagenes/bandera_es.png" alt="Bandera Española" />
+          Español
+        </ion-select-option>
+        <ion-select-option value="en">
+          <img src="assets/imagenes/bandera_en.png" alt="Bandera Inglesa" />
+          Inglés
+        </ion-select-option>
+      </ion-select>
+    </div>
+    <div class="form-group mb-3 ion-margin-start ion-margin-end">
+      <ion-select class="custom-inputs" [(ngModel)]="tema">
+        <ion-select-option value="claro">☀️ Claro</ion-select-option>
+        <ion-select-option value="oscuro">🌙 Oscuro</ion-select-option>
+      </ion-select>
+    </div>
   </ion-list>
 
-  <ion-button expand="block" (click)="guardarCambios()">Guardar Cambios</ion-button>
+  <div class="center-button">
+    <button [routerLink]="['/calendario']" class="btn btn-purple btn-md rounded-pill px-4" style="color: white">
+      <ion-icon name="save-outline"></ion-icon>
+      Guardar
+    </button>
+  </div>
 </ion-content>

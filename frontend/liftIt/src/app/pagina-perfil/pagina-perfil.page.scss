@@ -1,0 +1,55 @@
+.full-background {
+    --background: #5dbd96;
+  }
+
+  .white-text {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+.large-avatar {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 4px solid #333; // Agrega un borde alrededor de la imagen
+}
+
+.profile-info {
+    font-size: 18px;
+    color: #333; // Agrega un margen alrededor de la información del perfil
+}
+
+.profile-info h2 {
+    font-weight: bold;
+}
+
+.profile-info p {
+    color: #666;
+}
+
+.center-row {
+    display: flex;
+    justify-content: center;
+}
+
+.style-button {
+    border-radius: 50%;
+    width: 70px; // Aumenta el tamaño del botón
+    height: 70px; // Aumenta el tamaño del botón
+    padding: 0;
+    color: rgb(0, 0, 0);
+    background-color: #b5a2e8;
+    margin: 20px;
+    margin-top: 40px;// Añade una separación entre los botones
+
+    ion-icon {
+        font-size: 30px; // Aumenta el tamaño del icono
+    }
+}
+
+.no-block {
+    display: initial !important; // Esto sobrescribirá cualquier otro estilo de display que se haya aplicado
+}
