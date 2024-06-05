@@ -29,58 +29,45 @@
   <ion-grid>
       <ion-row>
         <ion-col size="4">
-          <p class="custom-text">Completado</p>
+          <p class="custom-text">{{estado}}</p>
         </ion-col>
 
         <ion-col size="4">
-          <p class="custom-text">00:45:35</p>
+          <p class="custom-text">{{duracion}}</p>
         </ion-col>
 
         <ion-col size="4">
-          <p class="custom-text">Intensidad media</p>
+          <p class="custom-text">{{intensidad}}</p>
         </ion-col>
       </ion-row>
   </ion-grid>
 
   <hr class="custom-divider">
 
-  <h4 class="float-right mx-4 mb-2" >Sensaciones</h4>
-  <p class="mx-4 mejorar-texto" >{{sensaciones}}</p>
+  <h4 class="float-right mx-4 mb-2 texto-negro " ><u>Sensaciones</u></h4>
+  <p class="mx-4 mejorar-texto texto-negro" >{{sensacion}}</p>
 
   <hr class="custom-divider">
 
-  <h4 class="float-right mx-4 mb-2">Entrenamiento realizado</h4>
+  <h4 class="float-right mx-4 mb-2 texto-negro">Entrenamiento realizado</h4>
 
-  <h6 class="float-right mx-4 mb-2">Calentamiento:</h6>
-  <p>{{calentamiento}}</p>
+  <h6 class="float-right mx-4 mb-2 texto-negro"><u>Calentamiento:</u></h6>
+  <p class="mx-4 mejorar-texto texto-negro">{{calentamiento}}</p>
 
-  <h6 class="float-right mx-4 mb-2">Ejercicios Principales:</h6>
-  <ul>
-    <li>Sentadillas: 4 series x 8 repeticiones.</li>
-    <li>Press de banca: 4 series x 8 repeticiones.</li>
-    <li>Peso muerto: 3 series x 10 repeticiones.</li>
-  </ul>
+  <h6 class="float-right mx-4 mb-2 texto-negro"><u>Ejercicios Principales:</u></h6>
+  <p class="mx-4 mejorar-texto texto-negro">{{ejerPrincipales}}</p>
 
-  <h6 class="float-right mx-4 mb-2">Ejercicios Complementarios:</h6>
-  <ul>
-    <li>Lunges: 3 series x 12 repeticiones (cada pierna).</li>
-    <li>Pull-ups: 3 series x 8 repeticiones.</li>
-    <li>Flexiones de brazos: 3 series x 12 repeticiones.</li>
-  </ul>
+  <h6 class="float-right mx-4 mb-2 texto-negro"><u>Ejercicios Complementarios:</u></h6>
+  <p class="mx-4 mejorar-texto texto-negro">{{ejerComplementarios}}</p>
 
-  <h6 class="float-right mx-4 mb-2">Core:</h6>
-  <ul>
-    <li>Plancha: 3 series de 30 segundos.</li>
-    <li>Elevación de piernas colgado: 3 series x 12 repeticiones.</li>
-  </ul>
+  <h6 class="float-right mx-4 mb-2 texto-negro"><u>Core:</u></h6>
+  <p class="mx-4 mejorar-texto texto-negro">{{core}}</p>
 
-  <h6 class="float-right mx-4 mb-2">Enfriamiento:</h6>
-  <ul>
-    <li>Estiramientos estáticos para relajar los músculos trabajados.</li>
-    <li>Respiración profunda y relajación.</li>
-  </ul>
+  <h6 class="float-right mx-4 mb-2 texto-negro"><u>Enfriamiento:</u></h6>
+  <p class="mx-4 mejorar-texto texto-negro">{{enfriamiento}}</p>
+  
   <div class="button-container">
-    <button class="btn btn-purple btn-md rounded-pill px-4" onclick="location.href='/calendario'"> <ion-icon name="trash-outline"></ion-icon>Borrar</button>
+    <button class="btn btn-purple btn-md rounded-pill px-4" (click)="borrarEntrenamiento()"> <ion-icon name="trash-outline"></ion-icon>Borrar</button>
     <button class="btn btn-purple btn-md rounded-pill px-4" onclick="location.href='/editar-entrenamiento'"><ion-icon name="pencil-outline"></ion-icon>Modificar</button>
   </div>
 </ion-content>

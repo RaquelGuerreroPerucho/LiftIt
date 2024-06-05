@@ -1,5 +1,5 @@
 .full-background {
-    --background: #5dbd96;
+    --background: #ffffff;
   }
 
 .large-avatar {
@@ -9,25 +9,25 @@
     margin-left: auto;
     margin-top: 20px;
     margin-bottom: 20px;
-    border: 4px solid #333;  // Añade un borde blanco alrededor de la foto
+    border: 4px solid #000000;  // Añade un borde blanco alrededor de la foto
 }
 
 .edit-button {
     display: block; // Hace que el botón se muestre debajo de la foto
     margin: 10px auto; // Centra el botón horizontalmente
-    background-color: #b5a2e8;
+    background-color:#ff601d;
     padding: 8px;
     border-radius: 12px;
     color: white;
 }
 
 .custom-inputs {
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid grey;
     background-color: transparent;
     border-radius: 25px;
-    color: rgb(255, 252, 252);
+    color: rgb(0, 0, 0);
     --padding-start: 10px;
-    background-color: #000000;
+    background-color: #ffffff;
   }
   
 .item-margin {
@@ -39,7 +39,7 @@
 }
 
 .btn-purple {
-    background-color: #b5a2e8;
+    background-color: #ff601d;
   }
 
 .grid-container {

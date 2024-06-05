@@ -67,8 +67,4 @@ export class EntrenamientoService {
     return this.http.get<Entrenamiento>(url, {headers});
   }
 
-
-
-
-
 }

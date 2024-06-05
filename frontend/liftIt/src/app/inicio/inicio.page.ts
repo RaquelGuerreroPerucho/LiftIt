@@ -159,8 +159,8 @@ export class InicioPage implements OnInit {
         ).subscribe();
       }),
       catchError(err => {
-      //  this.presentToast('Usuario/contraseña incorrectos');
-        this.presentToast(err);
+        this.presentToast('Usuario/contraseña incorrectos');
+       // this.presentToast(err);
         return of(err);
       })
     ).subscribe();

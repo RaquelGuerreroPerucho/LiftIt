@@ -1,5 +1,5 @@
 .full-background {
-  --background: #5dbd96;
+  --background: #ffffff;
 }
 
 .forzarBoton{
@@ -7,7 +7,7 @@
   top: 60px;
   left: 20px;
   z-index: 100;
-  background-color: #B5A2E8;
+  background-color: #ff601d;
   padding: 5px;
   width: 25%;
   border-radius: 25px;
@@ -26,9 +26,6 @@
   }
 
   ion-card {
-    background-color: #135d54;
-    border: solid 1px #fff;
-    color: #fff;
     text-align: center;
   }
 
@@ -45,7 +42,7 @@
   }
 
   .btn-purple {
-    background-color: #b5a2e8;
+    background-color: #ff601d;
     margin-top: 30px;
     margin-bottom: 20px;
     float: right;
@@ -55,13 +52,12 @@
   }
 
   .border-button{
-    border-color: rgb(255, 255, 255);
     border-radius: 4px;
 
   }
 
   .white-text {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 34px;
     font-weight: bold;
     margin-top: 30px
@@ -84,7 +80,7 @@
   .custom-divider {
     border: 0;
     height: 10px;
-    background: linear-gradient(to right, transparent, black, transparent);
+    background: linear-gradient(to right, transparent, #ff601d, transparent);
     margin: 16px 0;
   }
 
@@ -100,3 +96,6 @@
     margin-bottom: 40px;
   }
 
+  .texto-negro{
+    color: black;
+  }

@@ -1,5 +1,5 @@
 .full-background {
-  --background: #5dbd96;
+  --background: #ffffff;
 }
 
 .ios .custom-margin-top {
@@ -33,8 +33,8 @@
   transform: translateX(-50%);
   width: 95%;
   height: 100%;
-  background-color: black;
-  color: white;
+  background-color: rgb(255, 249, 243);
+  color: rgb(0, 0, 0);
   border-radius: 5%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -46,8 +46,8 @@ ion-segment-button {
   margin-top: 20%;
   --background: transparent;
   --color: grey;
-  --color-checked: #ffffff;
-  --indicator-color: #b5a2e8;
+  --color-checked: #ff601d;
+  --indicator-color: #ff601d;
   --indicator-height: 1px;
   --indicator-position: bottom;
 }
@@ -80,16 +80,16 @@ ion-segment-button::part(indicator) {
 }
 
 .custom-input {
-  border: 1px solid white;
+  border: 1px solid grey;
   background-color: transparent;
   border-radius: 25px;
-  color: white;
+  color: rgb(0, 0, 0);
   --padding-start: 10px;
 }
 
 
 .btn-purple {
-  background-color: #b5a2e8;
+  background-color: #ff601d;
   color: white;
 }
 

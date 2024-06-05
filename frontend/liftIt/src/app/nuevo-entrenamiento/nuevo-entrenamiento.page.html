@@ -2,7 +2,7 @@
   <ion-toolbar class="full-background">
     <ion-buttons slot="start">
       <ion-back-button
-        style="color: white"
+        style="color: #ff601d"
         defaultHref="calendario"
       ></ion-back-button>
     </ion-buttons>
@@ -22,7 +22,7 @@
         <div class="content-wrapper">
           <p>02/06/2024</p>
 
-          <ion-checkbox>Completado</ion-checkbox>
+          <ion-checkbox [(ngModel)]="completado">Completado</ion-checkbox>
 
           <div class="form-group mb-3 mt-3">
             <ion-input
@@ -61,10 +61,15 @@
             <ion-label> ESPECIFICACIONES </ion-label>
           </ion-item-divider>
 
-          <ion-button [routerLink]="['/calendario']">
+          <ion-button (click)="takePhoto()">
             <ion-icon slot="start" name="image-outline"></ion-icon>
-            Subir imagenes
           </ion-button>
+
+          <ion-list *ngFor="let photo of photos">
+            <ion-item>
+                <img [src]="photo" alt="" />
+            </ion-item>
+          </ion-list>
 
           <div class="form-group mb-3 mt-3">
             <ion-input
@@ -115,7 +120,7 @@
 
           <div class="text-center mt-3">
             <button
-              [routerLink]="['/calendario']"
+              (click)= "guardarEntrenamiento()"
               class="btn btn-purple btn-md rounded-pill px-4"
               style="color: white"
             >

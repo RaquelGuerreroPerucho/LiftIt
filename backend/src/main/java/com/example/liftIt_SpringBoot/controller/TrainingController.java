@@ -21,6 +21,7 @@ public class TrainingController {
 
     @PostMapping("/create")
     public ResponseEntity<TrainingModel> createTraining(@RequestBody TrainingModel trainingModel) {
+        System.out.println(trainingModel.toString());
         TrainingModel createdTraining = trainingService.createTraining(trainingModel);
         return new ResponseEntity<>(createdTraining, HttpStatus.CREATED);
     }
@@ -38,7 +39,7 @@ public class TrainingController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteTraining(@PathVariable Long id) {
         trainingService.deleteTraining(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/getByUserId/{userId}")
@@ -48,9 +49,13 @@ public class TrainingController {
     }
 
     @GetMapping("/getById/{id}/{email}")
-    public ResponseEntity<TrainingModel> getTrainingById(@PathVariable Long id, String email) {
-        TrainingModel training = trainingService.findById(id);
+    public ResponseEntity<TrainingModel> getTrainingById(@PathVariable Long id, @PathVariable String email) {
+    TrainingModel training = trainingService.findByIdAndUserEmail(id, email);
+    if (training != null) {
         return new ResponseEntity<>(training, HttpStatus.OK);
+    } else {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+}
 }
 

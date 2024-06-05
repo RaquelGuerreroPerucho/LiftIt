@@ -13,7 +13,7 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 
 import { CalendarOptions } from '@fullcalendar/core';
-import { en } from '@fullcalendar/core/internal-common';
+import { co, en } from '@fullcalendar/core/internal-common';
 import esLocale from '@fullcalendar/core/locales/es';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -53,13 +53,12 @@ export class CalendarioPage implements OnInit {
     themeSystem: 'bootstrap',
     height: 'auto',
     events: [
-      {
+    /*  {
         title: "Entrenamiento",
         start: '2024-05-30T10:00:00',
         end: '2024-05-30T16:00:00',
-        color: '#b5a2e8',
+        color: '#ff601d',
       },
-      /*
       {
         title: "Entrenamiento",
         start: '2024-06-01T10:00:00',
@@ -85,8 +84,11 @@ export class CalendarioPage implements OnInit {
   }
 
   ngOnInit() {
+    //this.limpiarCartas();
     this.initializePage();
   }
+
+
   async initializePage() {
     console.log('El token es:', Preferences.get({
       key: 'userToken'
@@ -100,7 +102,7 @@ export class CalendarioPage implements OnInit {
   async obtenerNombreUsuario() {
     const { value } = await Preferences.get({ key: 'userName' });
     this.nombreUsuario = value ?? '';
-    this.presentToast(" userName :" + value);
+   // this.presentToast(" userName :" + value);
 
   }
 
@@ -126,8 +128,8 @@ export class CalendarioPage implements OnInit {
                 start: entre.fecha,
                 end: entre.fecha,
                 // end: new Date(entre.fecha.getTime() + (entre.duracion.hours * 60 * 60 * 1000) + (entre.duracion.minutes * 60 * 1000)),
-                color: '#b5a2e8',
-                eventBackgroundColor: '#5dbd96',
+                color: '#ff601d',
+                eventBackgroundColor: '#ff601d',
                 eventTextColor: 'white',
                 id: entre.id,
               });
@@ -136,7 +138,8 @@ export class CalendarioPage implements OnInit {
                 " " + entre.sensacion +
                 " " + entre.fecha +
                 " " + entre.duracion);*/
-            });
+
+                 });
     
             this.calendarComponent.getApi().refetchEvents();
           }),
@@ -177,9 +180,9 @@ export class CalendarioPage implements OnInit {
           if (entre.id == ev.id) {
             this.anyadirCard(
               entre.estado ? "Completado" : "No Completado",
-              entre.fecha.toString(),
+              entre.hora.toString(),
               entre.duracion.toString(),
-              entre.sensacion,
+              entre.titulo,
               entre.id);
           }
       }
@@ -269,20 +272,20 @@ export class CalendarioPage implements OnInit {
 }
 
 function logTraining(training: Entrenamiento) {
-  console.log(`id: ${training.id}`);
-  console.log(`descripcion: ${training.descripcion}`);
-  console.log(`duracion: ${training.duracion}`);
-  console.log(`estado: ${training.estado}`);
-  console.log(`fecha: ${training.fecha}`);
-  console.log(`intensidad: ${training.intensidad}`);
-  console.log(`sensacion: ${training.sensacion}`);
-  console.log(`user_id: ${training.user_id}`);
-  console.log(`calendar_id: ${training.calendar_id}`);
-  console.log(`calentamiento: ${training.calentamiento}`);
-  console.log(`core: ${training.core}`);
-  console.log(`ejer_complementarios: ${training.ejer_complementarios}`);
-  console.log(`ejer_principales: ${training.ejer_principales}`);
-  console.log(`enfriamiento: ${training.enfriamiento}`);
-  // Agrega aquí los demás campos que necesites
+    console.log(`id: ${training.id}`);
+    console.log(`calentamiento: ${training.calentamiento}`);
+    console.log(`core: ${training.core}`);
+    console.log(`duracion: ${training.duracion}`);
+    console.log(`ejerComplementarios: ${training.ejerComplementarios}`);
+    console.log(`ejerPrincipales: ${training.ejerPrincipales}`);
+    console.log(`enfriamiento: ${training.enfriamiento}`);
+    console.log(`estado: ${training.estado}`);
+    console.log(`fecha: ${training.fecha}`);
+    console.log(`hora: ${training.hora}`);
+    console.log(`intensidad: ${training.intensidad}`);
+    console.log(`sensacion: ${training.sensacion}`);
+    console.log(`titulo: ${training.titulo}`);
+    console.log(`calendar_id: ${training.idCalendar}`);
+    console.log(`user_id: ${training.idUser}`);
 }
 

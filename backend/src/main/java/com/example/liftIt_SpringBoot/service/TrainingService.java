@@ -1,7 +1,11 @@
 package com.example.liftIt_SpringBoot.service;
 
+import com.example.liftIt_SpringBoot.model.CalendarModel;
 import com.example.liftIt_SpringBoot.model.TrainingModel;
+import com.example.liftIt_SpringBoot.model.UserModel;
+import com.example.liftIt_SpringBoot.repository.CalendarRepository;
 import com.example.liftIt_SpringBoot.repository.TrainingRepository;
+import com.example.liftIt_SpringBoot.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,8 +19,22 @@ import java.util.Optional;
 public class TrainingService {
 
     private final TrainingRepository trainingRepository;
+    private final UserRepository userRepository;
+    private final CalendarRepository calendarRepository;
 
+   /* public TrainingModel createTraining(TrainingModel trainingModel) {
+        return trainingRepository.save(trainingModel);
+    }
+*/
     public TrainingModel createTraining(TrainingModel trainingModel) {
+        UserModel user = userRepository.findById(trainingModel.getIdUser())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        CalendarModel calendar = calendarRepository.findById(trainingModel.getIdCalendar())
+                .orElseThrow(() -> new RuntimeException("Calendar not found"));
+
+        trainingModel.setUser(user);
+        trainingModel.setCalendar(calendar);
+
         return trainingRepository.save(trainingModel);
     }
 
@@ -41,6 +59,11 @@ public class TrainingService {
         Optional<TrainingModel> training = trainingRepository.findById(id);
         return training.orElse(null);
     }
+
+    public TrainingModel findByIdAndUserEmail(Long id, String email) {
+    Optional<TrainingModel> training = trainingRepository.findByIdAndUserEmail(id, email);
+    return training.orElse(null);
+}
 
 }
 
