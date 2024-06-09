@@ -103,11 +103,13 @@
   ion-button {
     --background: #ff601d;
     --color: white;
-    margin-top: 20px;
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 20%;
   }
+
   ion-select-option {
     color: black;
   }

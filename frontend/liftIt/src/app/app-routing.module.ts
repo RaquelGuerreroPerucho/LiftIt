@@ -40,10 +40,6 @@ const routes: Routes = [
     loadChildren: () => import('./pagina-perfil/pagina-perfil.module').then( m => m.PaginaPerfilPageModule)
   },
   {
-    path: 'editar-perfil',
-    loadChildren: () => import('./editar-perfil/editar-perfil.module').then( m => m.EditarPerfilPageModule)
-  },
-  {
     path: 'recuperar-contasenya',
     loadChildren: () => import('./recuperar-contasenya/recuperar-contasenya.module').then( m => m.RecuperarContasenyaPageModule)
   },

@@ -22,6 +22,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
         System.out.println("Procede a logear");
+        System.out.println(request);
 
         AuthResponse authResponse = authService.login(request);
 

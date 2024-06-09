@@ -14,12 +14,24 @@
     [pagination]="true"
     [zoom]="true"
   >
-    <swiper-slide *ngFor="let image of images">
-      <img [src]="image" />
-    </swiper-slide>
+    <ng-container *ngIf="imagesUrl.length > 0; else noImage">
+      <swiper-slide *ngFor="let image of imagesUrl">
+        <img [src]="image" />
+      </swiper-slide>
+    </ng-container>
+
+    <ng-template #noImage>
+      <img src="assets/imagenes/photo.png" class="small-image" />
+    </ng-template>
+
+    <ng-template #noImage>
+      <swiper-slide>
+        <img src="assets/photo.png"/>
+      </swiper-slide>
+    </ng-template>
   </swiper-container>
 
-  <button class="btn btn-purple border-button btn-sm rounded-pill px-4">
+  <button class="btn btn-purple border-button btn-sm rounded-pill px-4" (click)="onShareClick()">
     <ion-icon name="share-social-outline"></ion-icon>
     Share
   </button>
@@ -68,6 +80,6 @@
   
   <div class="button-container">
     <button class="btn btn-purple btn-md rounded-pill px-4" (click)="borrarEntrenamiento()"> <ion-icon name="trash-outline"></ion-icon>Borrar</button>
-    <button class="btn btn-purple btn-md rounded-pill px-4" onclick="location.href='/editar-entrenamiento'"><ion-icon name="pencil-outline"></ion-icon>Modificar</button>
+    <button class="btn btn-purple btn-md rounded-pill px-4" (click)="navegarAModificarEntrenamiento()"><ion-icon name="pencil-outline"></ion-icon>Modificar</button>
   </div>
 </ion-content>

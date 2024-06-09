@@ -2,18 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Entrenamiento } from './entrenamiento.model';
+import { ConfigCustom } from '../utils/config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EntrenamientoService {
 
-  baseUrl = "http://localhost:8091/trainings"; 
+  trainUrl = `${ConfigCustom.getBaseUrl()}/trainings`;
 
   constructor(private http: HttpClient) { }
 
   createTraining(trainingModel: any, token: string): Observable<any> {
-    const url = `${this.baseUrl}/create`;
+    const url = `${this.trainUrl}/create`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
@@ -22,8 +23,8 @@ export class EntrenamientoService {
     return this.http.post(url, trainingModel, {headers});
   }
 
-  updateTraining(id: string, trainingModel: any, token: string): Observable<any> {
-    const url = `${this.baseUrl}/update/${id}`;
+  updateTraining(id: string, trainingModel: Entrenamiento, token: string): Observable<any> {
+    const url = `${this.trainUrl}/update/${id}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
@@ -33,7 +34,7 @@ export class EntrenamientoService {
   }
 
   deleteTraining(id: string, token: string): Observable<any> {
-    const url = `${this.baseUrl}/delete/${id}`;
+    const url = `${this.trainUrl}/delete/${id}`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
@@ -45,7 +46,7 @@ export class EntrenamientoService {
   getEntrenamientosUsuario(userId: string, token: string): Observable<Entrenamiento[]> {
     console.log("token", token);
 
-    const url = `${this.baseUrl}/getByUserId/${userId}`;
+    const url = `${this.trainUrl}/getByUserId/${userId}`;
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -56,8 +57,8 @@ export class EntrenamientoService {
     return this.http.get<Entrenamiento[]>(url, {headers});
   }
 
-  getEntrenamientoById(id: string, token: string, email: string): Observable<Entrenamiento> {
-    const url = `${this.baseUrl}/getById/${id}/${email}`;
+  getEntrenamientoById(id: string, token: string, userId: string): Observable<Entrenamiento> {
+    const url = `${this.trainUrl}/getById/${id}/${userId}`;
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

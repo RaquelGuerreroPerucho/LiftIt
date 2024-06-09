@@ -40,7 +40,18 @@ public class TrainingService {
 
     public TrainingModel updateTraining(Long id, TrainingModel trainingModel) {
         if (trainingRepository.existsById(id)) {
+
             trainingModel.setId(id);
+
+
+            UserModel user = userRepository.findById(trainingModel.getIdUser())
+                    .orElseThrow(() -> new RuntimeException("User not found"));
+            CalendarModel calendar = calendarRepository.findById(trainingModel.getIdCalendar())
+                    .orElseThrow(() -> new RuntimeException("Calendar not found"));
+
+            trainingModel.setUser(user);
+            trainingModel.setCalendar(calendar);
+
             return trainingRepository.save(trainingModel);
         } else {
             return null;
@@ -60,8 +71,8 @@ public class TrainingService {
         return training.orElse(null);
     }
 
-    public TrainingModel findByIdAndUserEmail(Long id, String email) {
-    Optional<TrainingModel> training = trainingRepository.findByIdAndUserEmail(id, email);
+    public TrainingModel findByIdAndUserId(Long id, Long userId) {
+    Optional<TrainingModel> training = trainingRepository.findByIdAndUserId(id, userId);
     return training.orElse(null);
 }
 

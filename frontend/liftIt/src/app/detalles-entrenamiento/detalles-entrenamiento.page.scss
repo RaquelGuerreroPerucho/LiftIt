@@ -99,3 +99,12 @@
   .texto-negro{
     color: black;
   }
+
+  .small-image {
+    width: 50%; /* Ajusta este valor según tus necesidades */
+    height: auto; /* Esto mantiene la relación de aspecto de la imagen */
+    margin: 10px auto;
+    margin-top: 120px; /* Añade un margen de 20px en la parte superior e inferior y auto en los lados para centrar la imagen */
+    opacity: 0.8; /* Reduce la opacidad al 50% */
+    display: block; /* Necesario para que funcione el centrado con margin auto */
+  }

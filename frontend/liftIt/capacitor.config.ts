@@ -1,9 +1,23 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'com.raquelguerreroperucho.liftit',
   appName: 'liftIt',
-  webDir: 'www'
+  webDir: 'www',
+  bundledWebRuntime: false,
+  plugins: {
+    Filesystem: {
+      allowedSchemes: ["file", "http", "https"]
+    }
+  },
+  ios:{},
+cordova: {},
+/*
+  server: {
+    url: "http://localhost:8100",
+    cleartext: true
+  }
+  */
 };
 
 export default config;

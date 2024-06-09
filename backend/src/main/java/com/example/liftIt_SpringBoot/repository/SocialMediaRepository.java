@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SocialMediaRepository extends JpaRepository<SocialMediaModel, Long> {
-    List<SocialMediaModel> findByUserUsername(String username);
+    List<SocialMediaModel> findByUserUsername(String name);
 }

@@ -1,55 +1,46 @@
 .full-background {
     --background: #ffffff;
-  }
-
-  .white-text {
-    color: rgb(0, 0, 0);
-    font-size: 40px;
-    font-weight: bold;
-  }
-
-.large-avatar {
-    width: 100px;
-    height: 100px;
-    margin-right: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 4px solid #000000; // Agrega un borde alrededor de la imagen
-}
-
-.profile-info {
-    font-size: 18px;
-    color: #333; // Agrega un margen alrededor de la información del perfil
-}
-
-.profile-info h2 {
-    font-weight: bold;
-}
-
-.profile-info p {
-    color: #666;
-}
-
-.center-row {
-    display: flex;
-    justify-content: center;
 }
 
 .style-button {
-    border-radius: 50%;
-    width: 70px; // Aumenta el tamaño del botón
-    height: 70px; // Aumenta el tamaño del botón
-    padding: 0;
-    color: rgb(255, 255, 255);
+
     background-color: #ff601d;
-    margin: 20px;
-    margin-top: 40px;// Añade una separación entre los botones
+    margin-top: 20px;
 
     ion-icon {
         font-size: 30px; // Aumenta el tamaño del icono
+        color: white;
     }
 }
 
-.no-block {
-    display: initial !important; // Esto sobrescribirá cualquier otro estilo de display que se haya aplicado
+.profile-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-info ion-label {
+    flex: 1;
+}
+
+.profile-info ion-input {
+    flex: 1;
+    text-align: right;
+
+}
+
+.profile-avatar {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%; // Esto hará que la imagen sea circular
+    border: 5px solid #dc6d3d; // Esto añadirá un borde negro alrededor de la imagen
+    display: block;
+    margin: auto;
+}
+
+.center-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

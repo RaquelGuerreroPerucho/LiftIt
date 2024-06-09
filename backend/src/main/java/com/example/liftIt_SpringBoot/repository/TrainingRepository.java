@@ -14,7 +14,7 @@ import java.util.Optional;
 public interface TrainingRepository extends JpaRepository<TrainingModel, Long> {
         List<TrainingModel> findByUserId(Long userId);
         Optional<TrainingModel> findById(Long id);
-        @Query("SELECT t FROM TrainingModel t WHERE t.id = :id AND t.user.email = :email")
-        Optional<TrainingModel> findByIdAndUserEmail(@Param("id") Long id, @Param("email") String email);
+        @Query("SELECT t FROM TrainingModel t WHERE t.id = :id AND t.user.id = :userId")
+        Optional<TrainingModel> findByIdAndUserId(@Param("id") Long id, @Param("userId") Long userId);
 
 }

@@ -2,7 +2,7 @@
   <ion-toolbar class="full-background">
     <ion-buttons slot="start">
       <ion-back-button
-        style="color: white"
+        style="color: #ff601d"
         defaultHref="calendario"
       ></ion-back-button>
     </ion-buttons>
@@ -20,9 +20,15 @@
     <div class="card-wrapper">
       <div class="card-container">
         <div class="content-wrapper">
-          <p>02/06/2024</p>
-
-          <ion-checkbox>Completado</ion-checkbox>
+          
+          <ion-input
+          name="titulo"
+          [(ngModel)]="titulo"
+          type="text"
+          class="custom-input"
+          placeholder="Título del entrenamiento"
+          required
+          ></ion-input>
 
           <div class="form-group mb-3 mt-3">
             <ion-input
@@ -30,7 +36,7 @@
               [(ngModel)]="trainingTime"
               type="text"
               class="custom-input"
-              placeholder="Tiempo de entrenamiento (HH:mm:ss)"
+              placeholder="Tiempo del entrenamiento"
               required
               (ionChange)="validarTiempo()"
             ></ion-input>
@@ -45,6 +51,10 @@
               <option value="baja">Intensidad baja</option>
               <option value="media">Intensidad media</option>
               <option value="alta">Intensidad alta</option>
+              <option value="" disabled selected>
+                Selecciona la intensidad del entrenamiento
+              </option>
+            
             </select>
 
             <ion-input
@@ -61,10 +71,23 @@
             <ion-label> ESPECIFICACIONES </ion-label>
           </ion-item-divider>
 
-          <ion-button [routerLink]="['/calendario']">
-            <ion-icon slot="start" name="image-outline"></ion-icon>
-            Subir imagenes
-          </ion-button>
+          <!--<ion-list class="mb-3 mt-3 mx-2" style="background: none;">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="auto"  ngFor="let photo of photos" class="ion-align-items-center ion-justify-content-center">
+                  <img [src]="photo" alt="" style="width: 80px; height: 100px; object-fit: cover;"/>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-list>-->
+
+
+          <!--<div class="ion-text-center">
+            <ion-button class="mb-3 mt-3" (click)="takePhoto()">
+              <ion-icon slot="start" name="add-outline"></ion-icon>
+              <ion-icon slot="start" name="image-outline"></ion-icon>
+            </ion-button>
+          </div>-->
 
           <div class="form-group mb-3 mt-3">
             <ion-input
@@ -115,7 +138,8 @@
 
           <div class="text-center mt-3">
             <button
-              [routerLink]="['/calendario']"
+
+              (click)="performUpdate()"
               class="btn btn-purple btn-md rounded-pill px-4"
               style="color: white"
             >

@@ -20,10 +20,21 @@
     <div class="card-wrapper">
       <div class="card-container">
         <div class="content-wrapper">
-          <p>02/06/2024</p>
 
-          <ion-checkbox [(ngModel)]="completado">Completado</ion-checkbox>
+          <ion-input
+          name="Titulo"
+          [(ngModel)]="titulo"
+          type="text"
+          class="custom-input"
+          placeholder="Titulo"
+          required
+          ></ion-input>
 
+          <ion-checkbox class="mb-3" [(ngModel)]="completado">Completado</ion-checkbox>
+          <ion-datetime
+          [ngModel]="fechaActual"
+          (ionChange)="clickedCalendar($event)"
+          style="background-color: rgb(255, 249, 243);" locale="es-ES"></ion-datetime>
           <div class="form-group mb-3 mt-3">
             <ion-input
               name="Tiempo"
@@ -61,16 +72,25 @@
             <ion-label> ESPECIFICACIONES </ion-label>
           </ion-item-divider>
 
-          <ion-button (click)="takePhoto()">
-            <ion-icon slot="start" name="image-outline"></ion-icon>
-          </ion-button>
-
-          <ion-list *ngFor="let photo of photos">
-            <ion-item>
-                <img [src]="photo" alt="" />
-            </ion-item>
+          <ion-list class="mb-3 mt-3 mx-2" style="background: none;">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="auto" *ngFor="let photo of photos" class="ion-align-items-center ion-justify-content-center">
+                  <img [src]="photo" alt="" style="width: 80px; height: 100px; object-fit: cover;"/>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </ion-list>
 
+
+          <div class="ion-text-center">
+            <ion-button class="mb-3 mt-3" (click)="takePhoto()">
+              <ion-icon slot="start" name="add-outline"></ion-icon>
+              <ion-icon slot="start" name="image-outline"></ion-icon>
+            </ion-button>
+          </div>
+
+          
           <div class="form-group mb-3 mt-3">
             <ion-input
               name="Calentamiento"

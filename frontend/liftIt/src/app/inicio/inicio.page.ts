@@ -68,15 +68,7 @@ export class InicioPage implements OnInit {
     console.log(this.nombreUsuario);
     console.log(this.email);
     console.log(this.contrasenya);
-    console.log(this.repetirContasenya);
-    console.log(this.preguntaSeguridad);
-    console.log(this.respuestaSeguridad);
-
-    // Comprobar que los campos de pregunta y respuesta de seguridad están rellenados
-    if (this.preguntaSeguridad === "" || this.respuestaSeguridad === "") {
-      this.presentToast('Por favor, rellene los campos de pregunta y respuesta de seguridad');
-      return;
-    }
+    console.log(this.repetirContasenya)
 
     // Comprobar que el nombre de usuario es válido
     const usernameRegex = /^\S*$/;
@@ -148,9 +140,15 @@ export class InicioPage implements OnInit {
               value: user.username
             }); 
 
+            await Preferences.set({
+              key: 'userID',
+              value: String(user.id)
+            }); 
+
             this.navCtrl.navigateForward('calendario');
           }),
           catchError(err => {
+            console.log(err);
             this.presentToast('No se ha podido recuperar usuario');
         console.log(result.token);
             

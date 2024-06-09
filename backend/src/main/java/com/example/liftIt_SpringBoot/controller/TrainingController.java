@@ -48,9 +48,9 @@ public class TrainingController {
         return new ResponseEntity<>(trainingList, HttpStatus.OK);
     }
 
-    @GetMapping("/getById/{id}/{email}")
-    public ResponseEntity<TrainingModel> getTrainingById(@PathVariable Long id, @PathVariable String email) {
-    TrainingModel training = trainingService.findByIdAndUserEmail(id, email);
+    @GetMapping("/getById/{id}/{userId}")
+    public ResponseEntity<TrainingModel> getTrainingById(@PathVariable Long id, @PathVariable Long userId) {
+    TrainingModel training = trainingService.findByIdAndUserId(id, userId);
     if (training != null) {
         return new ResponseEntity<>(training, HttpStatus.OK);
     } else {
