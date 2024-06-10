@@ -14,7 +14,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     CommonModule,
     FormsModule,
     IonicModule,
-    DetallesEntrenamientoPageRoutingModule
+    DetallesEntrenamientoPageRoutingModule,
+  
   ],
   declarations: [DetallesEntrenamientoPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

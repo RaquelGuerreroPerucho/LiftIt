@@ -1,3 +1,21 @@
+.full-background {
+  --background: #ffffff;
+}
+
+.forzarBoton{
+  position: fixed;
+  top: 60px;
+  left: 20px;
+  z-index: 100;
+  background-color: #ff601d;
+  padding: 5px;
+  width: 25%;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .carousel-container {
     height: 100%;
   }
@@ -8,9 +26,6 @@
   }
 
   ion-card {
-    background-color: #135d54;
-    border: solid 1px #fff;
-    color: #fff;
     text-align: center;
   }
 
@@ -24,4 +39,72 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .btn-purple {
+    background-color: #ff601d;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    float: right;
+    margin-right: 20px;
+    color: white;
+    
+  }
+
+  .border-button{
+    border-radius: 4px;
+
+  }
+
+  .white-text {
+    color: rgb(0, 0, 0);
+    font-size: 34px;
+    font-weight: bold;
+    margin-top: 30px
+  }
+
+  .custom-text {
+    border: 1px solid black; /* Añade un borde a cada palabra */
+    border-radius: 25px; /* Hace que el borde sea redondeado */
+    padding: 5px;
+    font-size: 13px; /* Añade un poco de espacio entre el texto y el borde */
+    text-align: center; /* Alinea el texto al centro horizontalmente */
+    display: flex; /* Hace que el contenedor sea un contenedor flex */
+    align-items: center; /* Alinea el texto al centro verticalmente */
+    justify-content: center; /* Alinea el texto al centro horizontalmente */
+    color: white;
+    background-color: black;
+    margin-bottom: 0;
+  }
+
+  .custom-divider {
+    border: 0;
+    height: 10px;
+    background: linear-gradient(to right, transparent, #ff601d, transparent);
+    margin: 16px 0;
+  }
+
+  .mejorar-texto{
+    text-align: justify;
+
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px; /* Añade un espacio entre los botones */
+    margin-bottom: 40px;
+  }
+
+  .texto-negro{
+    color: black;
+  }
+
+  .small-image {
+    width: 50%; /* Ajusta este valor según tus necesidades */
+    height: auto; /* Esto mantiene la relación de aspecto de la imagen */
+    margin: 10px auto;
+    margin-top: 120px; /* Añade un margen de 20px en la parte superior e inferior y auto en los lados para centrar la imagen */
+    opacity: 0.8; /* Reduce la opacidad al 50% */
+    display: block; /* Necesario para que funcione el centrado con margin auto */
   }

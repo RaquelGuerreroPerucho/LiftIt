@@ -1,0 +1,46 @@
+.full-background {
+    --background: #ffffff;
+}
+
+.style-button {
+
+    background-color: #ff601d;
+    margin-top: 20px;
+
+    ion-icon {
+        font-size: 30px; // Aumenta el tamaño del icono
+        color: white;
+    }
+}
+
+.profile-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-info ion-label {
+    flex: 1;
+}
+
+.profile-info ion-input {
+    flex: 1;
+    text-align: right;
+
+}
+
+.profile-avatar {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%; // Esto hará que la imagen sea circular
+    border: 5px solid #dc6d3d; // Esto añadirá un borde negro alrededor de la imagen
+    display: block;
+    margin: auto;
+}
+
+.center-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

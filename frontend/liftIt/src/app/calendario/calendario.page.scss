@@ -1,0 +1,77 @@
+.full-background {
+  --background: rgb(255, 255, 255);
+}
+
+.custom-datetime-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.custom-datetime {
+  --color: black;
+  --ion-color-primary: #000000;
+  --background: #a08d8dec;
+  --border-radius: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  &:not(.datetime-placeholder) {
+    color: #ff0202;
+  }
+}
+.white-text {
+  color: rgb(0, 0, 0);
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.white-bold{
+  color: white;
+  font-weight: bold;
+}
+
+.gray-background{
+  background-color: #ff601d;
+}
+
+.custom-card {
+  border-radius: 20px;
+  background-color: rgb(255, 249, 243);
+  color: rgb(0, 0, 0); /* Cambia el color del texto por defecto a blanco */
+}
+
+.custom-card ion-card-title {
+  color:  #000000;
+  margin-left: 20px; /* Ajusta el margen según tus necesidades */
+}
+
+.custom-subtitle {
+  display: inline-block;
+  padding: 2px 8px;
+  background-color: #ff601d;
+  color: black; /* Color del texto de la etiqueta */
+  margin: 0; /* Ajusta el margen según tus necesidades */
+}
+
+.custom-content {
+  color: rgb(0, 0, 0);
+  margin: 0; /* Ajusta el margen según tus necesidades */
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  padding: 0; /* Ajusta el relleno según tus necesidades */
+}
+
+.btn-purple {
+  background-color:  #ff601d;
+}
+
+.fc-day, .fc-content {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 249, 243);
+}
+

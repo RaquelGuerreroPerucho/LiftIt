@@ -1,64 +1,154 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>nuevoEntrenamiento</ion-title>
+  <ion-toolbar class="full-background">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="calendario"></ion-back-button>
-      </ion-buttons>
+      <ion-back-button
+        style="color: #ff601d"
+        defaultHref="calendario"
+      ></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">nuevoEntrenamiento</ion-title>
-    </ion-toolbar>
+<ion-content [fullscreen]="true" class="full-background">
+  <ion-header class="full-background" collapse="condense">
+    <ion-toolbar class="full-background"> </ion-toolbar>
   </ion-header>
 
-  <div id = "nuevoEntrenamiento">
-    <p>02/06/2024</p>
-    <h2>Nuevo entrenamiento</h2>
+  <h1 class="white-text float-right mx-4 mb-2">Nuevo entrenamiento</h1>
 
-    <ion-checkbox>Completado</ion-checkbox>
+  <div id="container" class="container custom-margin">
+    <div class="card-wrapper">
+      <div class="card-container">
+        <div class="content-wrapper">
 
-    <p>Introduce el tiempo</p>
-    <ion-picker>
-      <ion-picker-column value="00">
-        <ion-picker-column-option value="" disabled="false">Horas</ion-picker-column-option>
-        <ion-picker-column-option value="00">00</ion-picker-column-option>
+          <ion-input
+          name="Titulo"
+          [(ngModel)]="titulo"
+          type="text"
+          class="custom-input"
+          placeholder="Titulo"
+          required
+          ></ion-input>
 
-      </ion-picker-column>
-      <ion-picker-column value="30">
-        <ion-picker-column-option value="" disabled="false">Minutos</ion-picker-column-option>
-        <ion-picker-column-option value="30">30</ion-picker-column-option>
-   
-      </ion-picker-column>
-      <ion-picker-column value="25">
-        <ion-picker-column-option value="" disabled="false">Segundos</ion-picker-column-option>
-        <ion-picker-column-option value="25">25</ion-picker-column-option>
-      </ion-picker-column>
-    </ion-picker>
+          <ion-checkbox class="mb-3" [(ngModel)]="completado">Completado</ion-checkbox>
+          <ion-datetime
+          [ngModel]="fechaActual"
+          (ionChange)="clickedCalendar($event)"
+          style="background-color: rgb(255, 249, 243);" locale="es-ES"></ion-datetime>
+          <div class="form-group mb-3 mt-3">
+            <ion-input
+              name="Tiempo"
+              [(ngModel)]="trainingTime"
+              type="text"
+              class="custom-input"
+              placeholder="Tiempo de entrenamiento (HH:mm:ss)"
+              required
+              (ionChange)="validarTiempo()"
+            ></ion-input>
+            <ion-label *ngIf="!esTiempoValido" color="danger"
+              >Formato de tiempo no válido</ion-label
+            >
+
+            <select class="custom-select custom-input" [(ngModel)]="intensidad">
+              <option value="" disabled selected>
+                Intensidad del entrenamiento
+              </option>
+              <option value="baja">Intensidad baja</option>
+              <option value="media">Intensidad media</option>
+              <option value="alta">Intensidad alta</option>
+            </select>
+
+            <ion-input
+              name="Sensaciones"
+              [(ngModel)]="sensaciones"
+              type="text"
+              class="custom-input"
+              placeholder="Sensaciones"
+              required
+            ></ion-input>
+          </div>
+
+          <ion-item-divider class="custom-divider">
+            <ion-label> ESPECIFICACIONES </ion-label>
+          </ion-item-divider>
+
+          <ion-list class="mb-3 mt-3 mx-2" style="background: none;">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="auto" *ngFor="let photo of photos" class="ion-align-items-center ion-justify-content-center">
+                  <img [src]="photo" alt="" style="width: 80px; height: 100px; object-fit: cover;"/>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-list>
 
 
-    <ion-list>
-      <ion-item>
-        <ion-select placeholder="Selecciona una opción">
-          <div slot="label">Intensidad</div>
-          <ion-select-option value="baja">Intensidad baja</ion-select-option>
-          <ion-select-option value="media">Intensidad media</ion-select-option>
-          <ion-select-option value="alta">Intensidad alta</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
+          <div class="ion-text-center">
+            <ion-button class="mb-3 mt-3" (click)="takePhoto()">
+              <ion-icon slot="start" name="add-outline"></ion-icon>
+              <ion-icon slot="start" name="image-outline"></ion-icon>
+            </ion-button>
+          </div>
 
-    <ion-textarea label="Sensaciones" labelPlacement="floating" fill="outline" placeholder="Escribe tus sensaciones sobre el entrenamiento realizado"></ion-textarea>
+          
+          <div class="form-group mb-3 mt-3">
+            <ion-input
+              name="Calentamiento"
+              [(ngModel)]="calentamiento"
+              type="text"
+              class="custom-input"
+              placeholder="Calentamiento"
+              required
+            ></ion-input>
 
-    <p>---------Especificaciones---------</p>
+            <ion-input
+              name="Ejercicios principales"
+              [(ngModel)]="ejerciciosPrincipales"
+              type="text"
+              class="custom-input"
+              placeholder="Ejercicios principales"
+              required
+            ></ion-input>
 
-    <ion-button [routerLink]="['/calendario']"><ion-icon slot="start" name="image-outline"></ion-icon>Subir imagenes</ion-button>
+            <ion-input
+              name="Ejercicios complementarios"
+              [(ngModel)]="ejerciciosComplementarios"
+              type="text"
+              class="custom-input"
+              placeholder="Ejercicios complementarios"
+              required
+            ></ion-input>
 
-    <ion-textarea label="Entrenamiento" labelPlacement="floating" fill="outline" placeholder="Indica tu entrenamiento realizado"></ion-textarea>
+            <ion-input
+              name="Core"
+              [(ngModel)]="core"
+              type="text"
+              class="custom-input"
+              placeholder="Core"
+              required
+            ></ion-input>
 
-    <ion-button [routerLink]="['/calendario']">Guardar</ion-button>
+            <ion-input
+              name="Enfriamiento"
+              [(ngModel)]="enfriamiento"
+              type="text"
+              class="custom-input"
+              placeholder="Enfriamiento"
+              required
+            ></ion-input>
+          </div>
+
+          <div class="text-center mt-3">
+            <button
+              (click)= "guardarEntrenamiento()"
+              class="btn btn-purple btn-md rounded-pill px-4"
+              style="color: white"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
 </ion-content>

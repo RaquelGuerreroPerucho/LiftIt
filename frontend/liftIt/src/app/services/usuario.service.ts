@@ -1,33 +1,56 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders  } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { h } from 'ionicons/dist/types/stencil-public-runtime';
+import { ConfigCustom } from '../utils/config';
+import { Usuario } from './usuario.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
-
-  baseUrl = "http://localhost:8091"
+export class UserService {
+ 
+  userUrl = `${ConfigCustom.getBaseUrl()}/user`
 
   constructor(private http: HttpClient) { }
 
-  registerUser(email: string, password: string, username: string, preguntaSeguridad: string, respuestaSeguridad: string): Observable<any>{
-    const url = `${this.baseUrl}/auth/register`;
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const body = JSON.stringify({email,password,username, preguntaSeguridad, respuestaSeguridad});
-    console.log(body)
-
-    return this.http.post(url,body,{headers});
+  createUser(user: any): Observable<any> {
+    return this.http.post(`${this.userUrl}/create`, user);
   }
 
-  loginUser(email: string, password: string): Observable<any>{
-    const url = `${this.baseUrl}/auth/login`;
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const body = JSON.stringify({email,password});
-
-    return this.http.post(url,body,{headers});
-    
+  updateUser(id: string, UsuarioModel : Usuario, token: string, ): Observable<any> {
+    const headers = new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put(`${this.userUrl}/update/${id}`,{headers});
   }
 
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete(`${this.userUrl}/delete/${id}`);
+  }
+
+  getAllUsers(): Observable<any> {
+    return this.http.get(`${this.userUrl}/list`);
+  }
+
+  getUserById(id: string, token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get(`${this.userUrl}/get/${id}`, {headers});
+  }
+
+  getUserByEmail(email: string, token: string): Observable<any> {
+    console.log("token", token);
+    const headers = new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+   
+     return this.http.get(`${this.userUrl}/getByEmail/${email}`, {headers});
+  }
 }

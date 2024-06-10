@@ -22,17 +22,26 @@ public class TrainingModel {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "titulo")
+    private String titulo;
+
+    @Column(name = "hora")
+    private Time hora;
+
     @Column(name = "fecha")
     private Date fecha;
 
     @Column(name = "duracion")
     private Time duracion;
 
+    @Column(name = "estado")
+    private Boolean estado;
+
     @Column(name = "intensidad")
     private String intensidad;
 
     @Column(name = "sensacion")
-    private String sensaciones;
+    private String sensacion;
 
     @Column(name = "calentamiento")
     private String calentamiento;
@@ -58,4 +67,32 @@ public class TrainingModel {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "calendar_id")
     private CalendarModel calendar;
+
+
+    @Transient
+    private Long idUser;
+
+    @Transient
+    private Long idCalendar;
+
+    @Override
+    public String toString() {
+        return "TrainingModel{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", hora=" + hora +
+                ", fecha=" + fecha +
+                ", duracion=" + duracion +
+                ", estado=" + estado +
+                ", intensidad='" + intensidad + '\'' +
+                ", sensacion='" + sensacion + '\'' +
+                ", calentamiento='" + calentamiento + '\'' +
+                ", ejerPrincipales='" + ejerPrincipales + '\'' +
+                ", ejerComplementarios='" + ejerComplementarios + '\'' +
+                ", core='" + core + '\'' +
+                ", enfriamiento='" + enfriamiento + '\'' +
+                ", user=" + user +
+                ", calendar=" + calendar +
+                '}';
+    }
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {register} from 'swiper/element/bundle';
+import { DetallesEntrenamientoPage } from './detalles-entrenamiento/detalles-entrenamiento.page';
 
 register();
 
@@ -23,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./nuevo-entrenamiento/nuevo-entrenamiento.module').then( m => m.NuevoEntrenamientoPageModule)
   },
   {
+    path: 'detalles-entrenamiento/:id',
+    component: DetallesEntrenamientoPage
+  },
+  {
     path: 'detalles-entrenamiento',
     loadChildren: () => import('./detalles-entrenamiento/detalles-entrenamiento.module').then( m => m.DetallesEntrenamientoPageModule)
   },
@@ -33,10 +38,6 @@ const routes: Routes = [
   {
     path: 'pagina-perfil',
     loadChildren: () => import('./pagina-perfil/pagina-perfil.module').then( m => m.PaginaPerfilPageModule)
-  },
-  {
-    path: 'editar-perfil',
-    loadChildren: () => import('./editar-perfil/editar-perfil.module').then( m => m.EditarPerfilPageModule)
   },
   {
     path: 'recuperar-contasenya',

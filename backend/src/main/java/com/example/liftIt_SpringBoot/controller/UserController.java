@@ -3,6 +3,8 @@ package com.example.liftIt_SpringBoot.controller;
 import com.example.liftIt_SpringBoot.model.UserModel;
 import com.example.liftIt_SpringBoot.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,32 +18,46 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/create")
-    public UserModel createUser(@RequestBody UserModel userModel) {
-        return userService.createUser(userModel);
+    public ResponseEntity<UserModel> createUser(@RequestBody UserModel userModel) {
+        UserModel createdUser = userService.createUser(userModel);
+        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")
-    public UserModel updateUser(@PathVariable Long id, @RequestBody UserModel userModel) {
-        return userService.updateUser(id, userModel);
+    public ResponseEntity<UserModel> updateUser(@PathVariable Long id, @RequestBody UserModel userModel) {
+        UserModel updatedUser = userService.updateUser(id, userModel);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteUser(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/list")
-    public List<UserModel> getAllUsers() {
-        return userService.getAllUsers();
+    public ResponseEntity<List<UserModel>> getAllUsers() {
+        List<UserModel> users = userService.getAllUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/get/{id}")
-    public UserModel getUserById(@PathVariable Long id) {
-        return userService.getUserById(id);
+    public ResponseEntity<UserModel> getUserById(@PathVariable Long id) {
+        UserModel user = userService.getUserById(id);
+
+        System.out.println("User: " + user.toString());
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @GetMapping("/getByEmail/{email}")
-    public UserModel getUserByEmail(@PathVariable String email) {
-        return userService.getUserByEmail(email);
+    public ResponseEntity<UserModel> getUserByEmail(@PathVariable String email) {
+        System.out.println("Email: " + email);
+
+        UserModel user = userService.getUserByEmail(email);
+
+        System.out.println("User: " + user.toString());
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
 }

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
@@ -20,6 +21,7 @@ public class TrainingController {
 
     @PostMapping("/create")
     public ResponseEntity<TrainingModel> createTraining(@RequestBody TrainingModel trainingModel) {
+        System.out.println(trainingModel.toString());
         TrainingModel createdTraining = trainingService.createTraining(trainingModel);
         return new ResponseEntity<>(createdTraining, HttpStatus.CREATED);
     }
@@ -37,16 +39,23 @@ public class TrainingController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteTraining(@PathVariable Long id) {
         trainingService.deleteTraining(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/getPage/{page}")
-    public ResponseEntity<List<TrainingModel>> getTrainingsByPage(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size) {
-        Pageable pageable = PageRequest.of(page, size);
-        List<TrainingModel> trainings = trainingService.getByPage(pageable);
-        return new ResponseEntity<>(trainings, HttpStatus.OK);
+    @GetMapping("/getByUserId/{userId}")
+    public ResponseEntity<List<TrainingModel>> getTrainingsByUserId(@PathVariable Long userId) {
+        List<TrainingModel> trainingList = trainingService.findByUserId(userId);
+        return new ResponseEntity<>(trainingList, HttpStatus.OK);
     }
+
+    @GetMapping("/getById/{id}/{userId}")
+    public ResponseEntity<TrainingModel> getTrainingById(@PathVariable Long id, @PathVariable Long userId) {
+    TrainingModel training = trainingService.findByIdAndUserId(id, userId);
+    if (training != null) {
+        return new ResponseEntity<>(training, HttpStatus.OK);
+    } else {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+}
 }
 

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Camera, CameraResultType } from '@capacitor/camera';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -15,6 +16,6 @@ import { NuevoEntrenamientoPage } from './nuevo-entrenamiento.page';
     IonicModule,
     NuevoEntrenamientoPageRoutingModule
   ],
-  declarations: [NuevoEntrenamientoPage]
+  declarations: [NuevoEntrenamientoPage, ]
 })
 export class NuevoEntrenamientoPageModule {}

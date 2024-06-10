@@ -1,54 +1,49 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>paginaPerfil</ion-title>
+  <ion-toolbar class="full-background">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="calendario"></ion-back-button>
+      <ion-back-button
+        style="color: #ff601d"
+        defaultHref="calendario"
+      ></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">paginaPerfil</ion-title>
-    </ion-toolbar>
+
+<ion-content [fullscreen]="true" class="full-background">
+  <ion-header class="full-background" collapse="condense">
+    <ion-toolbar class="full-background"> </ion-toolbar>
   </ion-header>
-
-  <ion-item class="d-flex align-items-center">
-    <ion-avatar class="mr-3">
-      <img alt="Silhouette of a person's head" src="assets/imagenes/perfilPako.png" />
-    </ion-avatar>
-    <ion-label>
-      <h2 class="mb-1">pakozoik&#64;hotmail.com</h2>
-      <p class="mb-0">Pakozoik</p>
-    </ion-label>
-  </ion-item>
-
-  <ion-button [routerLink]="['/editar-perfil']" class="mt-3 btn btn-primary"><ion-icon slot="start" name="pencil-outline"></ion-icon>Editar perfil</ion-button>
-  <ion-button [routerLink]="['/calendario']" class="mt-2 btn btn-secondary"><ion-icon slot="start" name="help-circle-outline"></ion-icon>Help Center</ion-button>
-
+  
+  <img class="profile-avatar" alt="Silhouette of a person's head" src="assets/imagenes/fotoPerfil.jpg" />
+  
   <!-- Datos del usuario -->
-  <ion-list lines="none" class="mt-4">
-    <ion-item>
+  <ion-list class="mt-4 no-block">
+    <ion-item class="full-background profile-info">
       <ion-label>Email:</ion-label>
-      <ion-input type="text" value="{{ email }}" disabled></ion-input>
+      <ion-input type="text" [(ngModel)]="email" [disabled]="!isEditing"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Idioma:</ion-label>
-      <ion-input type="text" value="{{ idioma }}" disabled></ion-input>
+    <ion-item class="full-background profile-info">
+      <ion-label>Nombre de usuario:</ion-label>
+      <ion-input type="text" [(ngModel)]="username" [disabled]="!isEditing"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Tema:</ion-label>
-      <ion-input type="text" value="{{ tema }}" disabled></ion-input>
-    </ion-item>
-    <ion-item>
+    <ion-item class="full-background profile-info">
       <ion-label>Versión:</ion-label>
-      <ion-input type="text" value="{{ version }}" disabled></ion-input>
+      <ion-input type="text" [(ngModel)]="version" [disabled]="!isEditing"></ion-input>
     </ion-item>
-    <ion-item (click)="navegarAlInicio()">
+    <ion-item class="full-background profile-info" (click)="navegarAlInicio()">
       <ion-label>Cerrar sesión</ion-label>
-      <ion-icon name="exit-outline"></ion-icon>
+      <ion-icon class="full-background profile-info" name="exit-outline"></ion-icon>
     </ion-item>
   </ion-list>
+  
+  <div class="center-row">
+    <button *ngIf="!isEditing" (click)="enableEditing()" class= "btn btn-md rounded-pill px-4 style-button">
+      <ion-icon slot="start" name="pencil-outline"></ion-icon>
+    </button>
+    <button *ngIf="isEditing" (click)="saveChanges()" class= "btn btn-md rounded-pill px-4 style-button">
+      <ion-icon slot="start" name="save-outline"></ion-icon>
+    </button>
+  </div>
 </ion-content>
 
