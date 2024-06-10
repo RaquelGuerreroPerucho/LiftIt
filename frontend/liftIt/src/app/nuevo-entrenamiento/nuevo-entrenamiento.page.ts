@@ -232,12 +232,8 @@ export class NuevoEntrenamientoPage implements OnInit {
               idTraining: result.id,
               idUser: userId!,
             }  
-             alert(image);
-
-            
             this.imgService.uploadImage(img, userToken!).pipe(
               tap(async (result) =>{
-                alert("CREADO CON EXITO")
 
               }),
               catchError((err) => {

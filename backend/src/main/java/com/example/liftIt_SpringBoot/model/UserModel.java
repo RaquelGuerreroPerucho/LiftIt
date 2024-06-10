@@ -40,9 +40,6 @@ public class UserModel implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<TrainingModel> trainings;
 
-    // Relación uno a muchos con SocialMediaModel
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<SocialMediaModel> socialMedias;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
