@@ -110,7 +110,7 @@ export class InicioPage implements OnInit {
   }
 
 
-  loginWithParams(email: string, pass : string)
+  async loginWithParams(email: string, pass : string)
   {
     console.log(email);
     console.log(pass);
@@ -165,8 +165,8 @@ export class InicioPage implements OnInit {
   }
 
 
-  login() {
-    this.loginWithParams(this.emailLogin,  this.contrasenyaLogin);
+ async login() {
+    await this.loginWithParams(this.emailLogin,  this.contrasenyaLogin);
   }
 
   selectTabs = 'registrarse';

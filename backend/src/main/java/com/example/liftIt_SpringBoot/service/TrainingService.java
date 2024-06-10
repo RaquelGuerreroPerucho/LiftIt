@@ -1,6 +1,7 @@
 package com.example.liftIt_SpringBoot.service;
 
 import com.example.liftIt_SpringBoot.model.CalendarModel;
+import com.example.liftIt_SpringBoot.model.ImageModel;
 import com.example.liftIt_SpringBoot.model.TrainingModel;
 import com.example.liftIt_SpringBoot.model.UserModel;
 import com.example.liftIt_SpringBoot.repository.CalendarRepository;
@@ -43,6 +44,10 @@ public class TrainingService {
 
             trainingModel.setId(id);
 
+            TrainingModel oldModel = trainingRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Training not found"));
+            List<ImageModel> images = oldModel.getImages();
+
 
             UserModel user = userRepository.findById(trainingModel.getIdUser())
                     .orElseThrow(() -> new RuntimeException("User not found"));
@@ -51,6 +56,7 @@ public class TrainingService {
 
             trainingModel.setUser(user);
             trainingModel.setCalendar(calendar);
+            trainingModel.setImages(images);
 
             return trainingRepository.save(trainingModel);
         } else {

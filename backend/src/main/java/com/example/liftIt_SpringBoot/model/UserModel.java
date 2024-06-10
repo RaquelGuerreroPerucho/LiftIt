@@ -37,9 +37,10 @@ public class UserModel implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    /*
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ImageModel> images = new ArrayList<ImageModel>();
-
+*/
     // Relación uno a muchos con TrainingModel
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<TrainingModel> trainings;

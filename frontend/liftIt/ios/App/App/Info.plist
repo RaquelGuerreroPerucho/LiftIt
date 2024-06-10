@@ -36,7 +36,7 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>https://3fe8-89-129-228-7.ngrok-free.app</key>
+			<key>https://3474-62-87-74-37.ngrok-free.app</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
