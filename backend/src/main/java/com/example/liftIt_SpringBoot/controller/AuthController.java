@@ -21,12 +21,22 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
-        return ResponseEntity.ok(authService.login(request));
+        System.out.println("Procede a logear");
+        System.out.println(request);
+
+        AuthResponse authResponse = authService.login(request);
+
+        System.out.println("Respuesta "+authResponse.toString());
+
+        return ResponseEntity.ok(authResponse);
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
-        authService.register(request);
-        return ResponseEntity.ok("Registrado con exito");
+    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
+        AuthResponse authResponse = authService.register(request);
+        System.out.println("AAAAAAAAAAAAAAAAA");
+
+        System.out.println(request);
+        return ResponseEntity.ok(authResponse);
     }
 }

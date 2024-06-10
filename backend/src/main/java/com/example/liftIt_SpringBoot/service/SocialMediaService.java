@@ -21,8 +21,8 @@ public class SocialMediaService {
         return socialMediaRepository.findById(id);
     }
 
-    public List<SocialMediaModel> findByUsername(String username) {
-        return socialMediaRepository.findByUserUsername(username);
+    public List<SocialMediaModel> findByUsername(String name) {
+        return socialMediaRepository.findByUserUsername(name);
     }
 
     public SocialMediaModel createSocialMedia(SocialMediaModel socialMediaModel) {

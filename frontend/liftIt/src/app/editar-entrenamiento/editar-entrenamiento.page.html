@@ -1,0 +1,153 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="full-background">
+    <ion-buttons slot="start">
+      <ion-back-button
+        style="color: #ff601d"
+        defaultHref="calendario"
+      ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="full-background">
+  <ion-header class="full-background" collapse="condense">
+    <ion-toolbar class="full-background"> </ion-toolbar>
+  </ion-header>
+
+  <h1 class="white-text float-right mx-4 mb-2">Modificar entrenamiento</h1>
+
+  <div id="container" class="container custom-margin">
+    <div class="card-wrapper">
+      <div class="card-container">
+        <div class="content-wrapper">
+          
+          <ion-input
+          name="titulo"
+          [(ngModel)]="titulo"
+          type="text"
+          class="custom-input"
+          placeholder="Título del entrenamiento"
+          required
+          ></ion-input>
+
+          <div class="form-group mb-3 mt-3">
+            <ion-input
+              name="Tiempo"
+              [(ngModel)]="trainingTime"
+              type="text"
+              class="custom-input"
+              placeholder="Tiempo del entrenamiento"
+              required
+              (ionChange)="validarTiempo()"
+            ></ion-input>
+            <ion-label *ngIf="!esTiempoValido" color="danger"
+              >Formato de tiempo no válido</ion-label
+            >
+
+            <select class="custom-select custom-input" [(ngModel)]="intensidad">
+              <option value="" disabled selected>
+                Intensidad del entrenamiento
+              </option>
+              <option value="baja">Intensidad baja</option>
+              <option value="media">Intensidad media</option>
+              <option value="alta">Intensidad alta</option>
+              <option value="" disabled selected>
+                Selecciona la intensidad del entrenamiento
+              </option>
+            
+            </select>
+
+            <ion-input
+              name="Sensaciones"
+              [(ngModel)]="sensaciones"
+              type="text"
+              class="custom-input"
+              placeholder="Sensaciones"
+              required
+            ></ion-input>
+          </div>
+
+          <ion-item-divider class="custom-divider">
+            <ion-label> ESPECIFICACIONES </ion-label>
+          </ion-item-divider>
+
+          <!--<ion-list class="mb-3 mt-3 mx-2" style="background: none;">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="auto"  ngFor="let photo of photos" class="ion-align-items-center ion-justify-content-center">
+                  <img [src]="photo" alt="" style="width: 80px; height: 100px; object-fit: cover;"/>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-list>-->
+
+
+          <!--<div class="ion-text-center">
+            <ion-button class="mb-3 mt-3" (click)="takePhoto()">
+              <ion-icon slot="start" name="add-outline"></ion-icon>
+              <ion-icon slot="start" name="image-outline"></ion-icon>
+            </ion-button>
+          </div>-->
+
+          <div class="form-group mb-3 mt-3">
+            <ion-input
+              name="Calentamiento"
+              [(ngModel)]="calentamiento"
+              type="text"
+              class="custom-input"
+              placeholder="Calentamiento"
+              required
+            ></ion-input>
+
+            <ion-input
+              name="Ejercicios principales"
+              [(ngModel)]="ejerciciosPrincipales"
+              type="text"
+              class="custom-input"
+              placeholder="Ejercicios principales"
+              required
+            ></ion-input>
+
+            <ion-input
+              name="Ejercicios complementarios"
+              [(ngModel)]="ejerciciosComplementarios"
+              type="text"
+              class="custom-input"
+              placeholder="Ejercicios complementarios"
+              required
+            ></ion-input>
+
+            <ion-input
+              name="Core"
+              [(ngModel)]="core"
+              type="text"
+              class="custom-input"
+              placeholder="Core"
+              required
+            ></ion-input>
+
+            <ion-input
+              name="Enfriamiento"
+              [(ngModel)]="enfriamiento"
+              type="text"
+              class="custom-input"
+              placeholder="Enfriamiento"
+              required
+            ></ion-input>
+          </div>
+
+          <div class="text-center mt-3">
+            <button
+
+              (click)="performUpdate()"
+              class="btn btn-purple btn-md rounded-pill px-4"
+              style="color: white"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

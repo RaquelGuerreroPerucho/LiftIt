@@ -1,7 +1,8 @@
 {
   "name": "liftIt",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

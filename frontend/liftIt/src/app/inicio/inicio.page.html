@@ -1,41 +1,128 @@
-<ion-header [translucent]="true">
-</ion-header>
+<ion-header [translucent]="true"></ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-  </ion-header>
+<ion-content [fullscreen]="true" class="full-background">
+  <ion-header collapse="condense"></ion-header>
 
-  <div id="container">
-
-    <ion-img src="assets/imagenes/LogoAPPGRANDEE.PNG"></ion-img>
-
-    <ion-segment [(ngModel)]="selectTabs">
-      <ion-segment-button value="registrarse">
-        <ion-label>Registrarse</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="iniciarSesion">
-        <ion-label>Iniciar sesión</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-    
-
-    <div *ngIf="selectTabs == 'registrarse'">
-      <strong>Crear cuenta</strong>
-      <ion-input name="nombreUsuario" value="" type="text" color="secondary" placeholder="Nombre de usuario" autofocus required><ion-icon slot="start" name="person"></ion-icon></ion-input>
-      <ion-input name="email" value="" type="email" color="secondary" placeholder="Email" required><ion-icon slot="start" name="mail"></ion-icon></ion-input>
-      <ion-input name="contrasenya" value="" type="password" color="secondary" placeholder="Contraseña" autofocus required><ion-icon slot="start" name="ellipsis-horizontal"></ion-icon><ion-input-password-toggle slot="end"></ion-input-password-toggle></ion-input>
-      <ion-input name="repetirContasenya" value="" type="password" color="secondary" placeholder="Repetir contraseña" autofocus required><ion-icon slot="start" name="ellipsis-horizontal"></ion-icon><ion-input-password-toggle slot="end"></ion-input-password-toggle></ion-input>
-      <ion-button [routerLink]="['/home']">Comenzar</ion-button>
-    </div>
-    
-    <div *ngIf="selectTabs == 'iniciarSesion'">
-      <strong>¡Qué alegria tenerte de vuelta!</strong>
-      <p>Completa la información a continuación para acceder a su cuenta</p>
-      <ion-input name="email" value="" type="email" color="secondary" placeholder="Email" required><ion-icon slot="start" name="mail"></ion-icon></ion-input>
-      <ion-input name="contrasenya" value="" type="password" color="secondary" placeholder="Contraseña" autofocus required><ion-icon slot="start" name="ellipsis-horizontal"></ion-icon><ion-input-password-toggle slot="end"></ion-input-password-toggle></ion-input>
-      <ion-button [routerLink]="['/home']">Acceder</ion-button>
+  <div id="container" class="container">
+    <div class="text-center custom-margin-top">
+      <ion-img
+        class="rounded img-fluid mb-4 custom-rounded-img"
+        src="assets/imagenes/LogoAPPGRANDEE.PNG"
+      ></ion-img>
     </div>
 
+    <div class="card-wrapper">
+      <div class="card-container">
+        <ion-segment [(ngModel)]="selectTabs">
+          <ion-segment-button value="registrarse">
+            <ion-label class="h3-like">Registrarse</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="iniciarSesion">
+            <ion-label class="h3-like">Iniciar sesión</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+
+        <div *ngIf="selectTabs === 'registrarse'" class="mt-3">
+          <h1 class="float-right mx-4 mb-3 text-bold">Crear cuenta</h1>
+          <form class="px-4">
+            <div class="form-group mb-3">
+              <ion-input
+                name="nombreUsuario"
+                [(ngModel)]="nombreUsuario"
+                type="text"
+                class="custom-input"
+                placeholder="Nombre de usuario"
+                required
+              ><ion-icon slot="start" name="person-outline"></ion-icon></ion-input>
+            </div>
+            <div class="form-group mb-3">
+              <ion-input
+                name="email"
+                [(ngModel)]="email"
+                type="email"
+                class="custom-input"
+                placeholder="Email"
+                required
+              ><ion-icon slot="start" name="mail"></ion-icon></ion-input>
+            </div>          
+
+            <div class="form-group mb-3">
+              <ion-input
+                name="contrasenya"
+                [(ngModel)]="contrasenya"
+                type="password"
+                class="custom-input"
+                placeholder="Contraseña"
+                required
+              ><ion-icon slot="start" name="ellipsis-horizontal-outline"></ion-icon><ion-input-password-toggle slot="end" color="light"></ion-input-password-toggle></ion-input>
+            </div>
+            <div class="form-group mb-3">
+              <ion-input
+                name="repetirContasenya"
+                [(ngModel)]="repetirContasenya"
+                type="password"
+                class="custom-input"
+                placeholder="Repetir contraseña"
+                required
+              ><ion-icon slot="start" name="ellipsis-horizontal-outline"></ion-icon><ion-input-password-toggle slot="end" color="light"></ion-input-password-toggle></ion-input>
+            </div>
+            <div class="text-center mt-3">
+              <button
+                class="btn btn-purple btn-md rounded-pill px-4"
+                style="color: white"
+                (click)="registrarse()">
+                Comenzar
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div *ngIf="selectTabs === 'iniciarSesion'" class="mt-4">
+          <div class="mx-4">
+            <!-- Agrega márgenes a los lados -->
+            <h1 class="text-bold">¡Qué alegría tenerte de vuelta!</h1>
+            <p style="color: #999999">
+              Completa la información a continuación para acceder a tu cuenta
+            </p>
+          </div>
+          <form class="px-4">
+            <div class="form-group mb-3">
+              <ion-input
+                name="email"
+                [(ngModel)]="emailLogin"
+                type="email"
+                class="custom-input"
+                placeholder="Email"
+                required
+              ><ion-icon slot="start" name="mail"></ion-icon></ion-input>
+            </div>
+            <div class="form-group mb-3">
+              <ion-input
+                name="contrasenya"
+                [(ngModel)]="contrasenyaLogin"
+                type="password"
+                class="custom-input"
+                placeholder="Contraseña"
+                required
+              ><ion-icon slot="start" name="ellipsis-horizontal-outline"></ion-icon><ion-input-password-toggle slot="end" color="light"></ion-input-password-toggle></ion-input>
+            </div>
+            <div class="text-center mt-3">
+              <button
+                class="btn btn-purple btn-md rounded-pill px-4"
+                style="color: white"
+                (click)="login()">
+                Acceder
+              </button>
+            </div>
+          </form>
+          <ion-router-link
+            [routerLink]="['/recuperar-contasenya']"
+            class="d-block text-center mt-3 link-bold-white"
+          >
+            ¿Has olvidado la contraseña?
+          </ion-router-link>
+        </div>
+      </div>
+    </div>
   </div>
-
 </ion-content>

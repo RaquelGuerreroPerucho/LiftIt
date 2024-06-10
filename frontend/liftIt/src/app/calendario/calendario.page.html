@@ -1,13 +1,45 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>calendario</ion-title>
+    <ion-title>Calendario</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="full-background">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">calendario</ion-title>
-    </ion-toolbar>
   </ion-header>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-end">
+      <ion-col size="3">
+        <ion-chip [routerLink]="['/pagina-perfil']" class="gray-background">
+          <ion-avatar class="custom-avatar">
+            <img alt="Foto de perfil" src="assets/imagenes/fotoPerfil.jpg" class="custom-rounded-img" />
+          </ion-avatar>
+          <ion-label class="white-bold">{{nombreUsuario}}</ion-label>
+        </ion-chip>
+      </ion-col>
+      <ion-col size="10">
+        <h1 class="white-text float-right mx-4 mb-3">Calendario</h1>
+      </ion-col>
+      <ion-col size="2"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="custom-datetime-wrapper">
+
+    <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+
+  </div>
+  <div #cardsContainer class="card-wrapper">
+  </div>
+
+  <div class="text-center mt-3">
+    <button [routerLink]="['/nuevo-entrenamiento']" class="btn btn-purple btn-md rounded-pill px-4"
+      style="color: white">
+      + Añadir
+    </button>
+  </div>
+    
+
+
 </ion-content>

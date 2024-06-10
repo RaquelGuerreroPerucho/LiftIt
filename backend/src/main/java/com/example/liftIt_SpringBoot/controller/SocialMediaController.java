@@ -30,9 +30,9 @@ public class SocialMediaController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/user/{username}")
-    public ResponseEntity<List<SocialMediaModel>> getSocialMediaByUser(@PathVariable String username) {
-        List<SocialMediaModel> socialMediaList = socialMediaService.findByUsername(username);
+    @GetMapping("/user/{usname}")
+    public ResponseEntity<List<SocialMediaModel>> getSocialMediaByUser(@PathVariable String usname) {
+        List<SocialMediaModel> socialMediaList = socialMediaService.findByUsername(usname);
         return new ResponseEntity<>(socialMediaList, HttpStatus.OK);
     }
 

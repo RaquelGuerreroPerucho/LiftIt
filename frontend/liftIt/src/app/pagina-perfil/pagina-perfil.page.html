@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="full-background">
+    <ion-buttons slot="start">
+      <ion-back-button
+        style="color: #ff601d"
+        defaultHref="calendario"
+      ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true" class="full-background">
+  <ion-header class="full-background" collapse="condense">
+    <ion-toolbar class="full-background"> </ion-toolbar>
+  </ion-header>
+  
+  <img class="profile-avatar" alt="Silhouette of a person's head" src="assets/imagenes/fotoPerfil.jpg" />
+  
+  <!-- Datos del usuario -->
+  <ion-list class="mt-4 no-block">
+    <ion-item class="full-background profile-info">
+      <ion-label>Email:</ion-label>
+      <ion-input type="text" [(ngModel)]="email" [disabled]="!isEditing"></ion-input>
+    </ion-item>
+    <ion-item class="full-background profile-info">
+      <ion-label>Nombre de usuario:</ion-label>
+      <ion-input type="text" [(ngModel)]="username" [disabled]="!isEditing"></ion-input>
+    </ion-item>
+    <ion-item class="full-background profile-info">
+      <ion-label>Versión:</ion-label>
+      <ion-input type="text" [(ngModel)]="version" [disabled]="!isEditing"></ion-input>
+    </ion-item>
+    <ion-item class="full-background profile-info" (click)="navegarAlInicio()">
+      <ion-label>Cerrar sesión</ion-label>
+      <ion-icon class="full-background profile-info" name="exit-outline"></ion-icon>
+    </ion-item>
+  </ion-list>
+  
+  <div class="center-row">
+    <button *ngIf="!isEditing" (click)="enableEditing()" class= "btn btn-md rounded-pill px-4 style-button">
+      <ion-icon slot="start" name="pencil-outline"></ion-icon>
+    </button>
+    <button *ngIf="isEditing" (click)="saveChanges()" class= "btn btn-md rounded-pill px-4 style-button">
+      <ion-icon slot="start" name="save-outline"></ion-icon>
+    </button>
+  </div>
+</ion-content>
+

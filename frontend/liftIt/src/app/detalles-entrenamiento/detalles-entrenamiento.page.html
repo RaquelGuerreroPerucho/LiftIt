@@ -1,0 +1,85 @@
+<ion-content [fullscreen]="true" class="full-background">
+  <div class="forzarBoton">
+    <ion-buttons slot="start">
+      <ion-back-button
+        style="color: white"
+        defaultHref="calendario"
+      ></ion-back-button>
+    </ion-buttons>
+  </div>
+
+  <swiper-container
+    (slidechange)="swiperSliderChanged($event)"
+    [loop]="true"
+    [pagination]="true"
+    [zoom]="true"
+  >
+    <ng-container *ngIf="imagesUrl.length > 0; else noImage">
+      <swiper-slide *ngFor="let image of imagesUrl">
+        <img [src]="image" />
+      </swiper-slide>
+    </ng-container>
+
+    <ng-template #noImage>
+      <img src="assets/imagenes/photo.png" class="small-image" />
+    </ng-template>
+
+    <ng-template #noImage>
+      <swiper-slide>
+        <img src="assets/photo.png"/>
+      </swiper-slide>
+    </ng-template>
+  </swiper-container>
+
+  <button class="btn btn-purple border-button btn-sm rounded-pill px-4" (click)="onShareClick()">
+    <ion-icon name="share-social-outline"></ion-icon>
+    Share
+  </button>
+
+  <h1 class="white-text float-right mx-4 mb-2">Detalles del entrenamiento</h1>
+
+  <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <p class="custom-text">{{estado}}</p>
+        </ion-col>
+
+        <ion-col size="4">
+          <p class="custom-text">{{duracion}}</p>
+        </ion-col>
+
+        <ion-col size="4">
+          <p class="custom-text">{{intensidad}}</p>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+  <hr class="custom-divider">
+
+  <h4 class="float-right mx-4 mb-2 texto-negro " ><u>Sensaciones</u></h4>
+  <p class="mx-4 mejorar-texto texto-negro" >{{sensacion}}</p>
+
+  <hr class="custom-divider">
+
+  <h4 class="float-right mx-4 mb-2 texto-negro">Entrenamiento realizado</h4>
+
+  <h6 class="float-right mx-4 mb-2 texto-negro"><u>Calentamiento:</u></h6>
+  <p class="mx-4 mejorar-texto texto-negro">{{calentamiento}}</p>
+
+  <h6 class="float-right mx-4 mb-2 texto-negro"><u>Ejercicios Principales:</u></h6>
+  <p class="mx-4 mejorar-texto texto-negro">{{ejerPrincipales}}</p>
+
+  <h6 class="float-right mx-4 mb-2 texto-negro"><u>Ejercicios Complementarios:</u></h6>
+  <p class="mx-4 mejorar-texto texto-negro">{{ejerComplementarios}}</p>
+
+  <h6 class="float-right mx-4 mb-2 texto-negro"><u>Core:</u></h6>
+  <p class="mx-4 mejorar-texto texto-negro">{{core}}</p>
+
+  <h6 class="float-right mx-4 mb-2 texto-negro"><u>Enfriamiento:</u></h6>
+  <p class="mx-4 mejorar-texto texto-negro">{{enfriamiento}}</p>
+  
+  <div class="button-container">
+    <button class="btn btn-purple btn-md rounded-pill px-4" (click)="borrarEntrenamiento()"> <ion-icon name="trash-outline"></ion-icon>Borrar</button>
+    <button class="btn btn-purple btn-md rounded-pill px-4" (click)="navegarAModificarEntrenamiento()"><ion-icon name="pencil-outline"></ion-icon>Modificar</button>
+  </div>
+</ion-content>
